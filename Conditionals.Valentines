@@ -1,0 +1,314 @@
+3.2.1 Coding Problem
+
+years = 0
+months = 5
+days = 0
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Ever been at a loss for what to do for your significant
+#other for Valentine's Day? Let's right some code to generate
+#a gift recommendation!
+#
+#The variables above give the length of the relationship in
+#number of years, months, and days. Add some code below to
+#print a gift recommendation based on these values:
+#
+# - If you've been dating for at least 4 years, give them a
+#   dog ("dog").
+# - If you've been dating for at least 1 year but less than
+#   4 years, give them a watch ("watch").
+# - If you've been dating for at least 6 months but less than
+#   1 year, give them concert tickets ("concert tickets").
+# - If you've been dating for at least a day but less than 6
+#   months, give them candy ("candy").
+# - If aren't actually dating, go big or go home: give them
+#   a yacht to sail away together ("yacht").
+#
+#Note that no matter what, you should only print one gift.
+
+
+#Add your code here!
+
+if years == 0 and months == 0 and days == 0:
+    print("yacht")
+elif years >= 4:
+    print("dog")
+elif years >= 1 and years < 4:
+    print("watch")
+elif years < 1 and months > 6:
+    print("concert tickets")
+elif years < 1 and months < 6 or days >= 1:
+    print("candy")
+
+
+
+3.2.2 Coding Problem - LateNightNoms:
+
+hour = 2
+minute = 0
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Around Georgia Tech, there are plenty of places to get a
+#late night bite to eat. However, they have different hours,
+#so when choosing where to go, you have to think about who's
+#still open!
+#
+#Imagine you're choosing between the following restaurants:
+#
+# - Barrelhouse: Closes at 11:00PM
+# - Taco Bell: Closes at 2:00AM
+# - Cookout: Closes at 3:00AM
+# - Waffle House: Never closes. Ever.
+#
+#Assume that this list is also a priority list: if Barrelhouse
+#is open, you choose Barrelhouse. If not, you choose Taco Bell
+#if it's open. If not, you choose Cookout if it's open. If
+#not, you choose Waffle House.
+#
+#However, there are two wrinkles:
+#
+# - We're using 12-hour time.
+# - hour will always represent a time from 10PM to 5AM.
+#
+#That means that if hour is 10 or 11, it's PM; if hour is
+#12, 1, 2, 3, 4, or 5, it's AM. This will make your reasoning
+#a little more complex. You may assume that all four
+#restaurants open later than 6AM, though, so you don't have
+#to worry about opening time, just closing time.
+#
+#Add some code below that will print what restaurant you'll
+#go to based on the current values of hour and minute.
+
+
+#Add your code here!
+
+if hour == 10:
+    print("Barrelhouse")
+elif hour == 11 or hour == 12 or hour == 1:
+    print("Taco Bell")
+elif hour == 2:
+    print("Cookout")
+else:
+    print("Waffle House")
+    
+    
+3.2.3 Coding Problem - NEstedConditionals:
+
+rating = "R"
+age = 15
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#The United States has a movie rating system that rates
+#movies with one of five ratings: G, PG, PG-13, R, and NC-17.
+#Although some of the ratings are not binding, imagine that
+#you are a parent who decides on the following rules:
+#
+# - Any child can see a G-rated movie.
+# - To see a PG-rated movie, your child must be 8 or older.
+# - To see a PG-13-rated movie, your child must be 13 or older.
+# - To see an R-rated movie, your child must be 17 or older.
+# - Your child may never see an NC-17 movie.
+#
+#The variables above give a rating and a child's age. Use
+#these variables to select and print one of these two
+#messages based on the criteria above:
+#
+# - "You may see that movie!"
+# - "You may not see that movie!"
+#
+#However, there's one trick: you may not use the 'and' operator
+#anywhere in this code!
+
+
+#Add your code here!
+if rating == "PG":
+    if age < 8:
+        print("You may not see that movie!")
+    else:
+        print("You may see that movie!")
+elif rating == "PG-13":
+    if age < 13:
+        print("You may not see that movie!")
+    else:
+        print("You may see that movie!")
+elif rating == "R":
+    if age < 17:
+        print("You may not see that movie!")
+    else:
+        print("You may see that movie!")
+elif rating == "NC-17":
+    if age < 18:
+        print("You may not see that movie!")
+    else:
+        print("You may see that movie!")
+else:
+    print("You may see that movie!")
+
+
+3.2.4. Coding Problem - Coffee:
+
+cafe = "Octane"
+balance = 2.46
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Atlanta is full of great coffee places. Unfortunately, great
+#coffee is usually expensive. The variables above will
+#contain a balance and a cafe name. Below are the prices of
+#a cup of coffee at each of three locations:
+#
+# - Octane: $6
+# - Galloway: $5
+# - Starbucks: $4
+# - Revelator: $3
+# - Dunkin: $2
+#
+#Add some code above that will print one of the following
+#two messages depending on whether the value of balance is
+#high enough to buy a cup of coffee at the given cafe.
+#
+# - If it is sufficient, print "With [balance] dollars, I
+#   can buy coffee at [cafe]"
+# - If it is not sufficient, print "With [balance] dollars,
+#   I cannot buy coffee at [cafe]"
+
+#Add your code here!
+if balance >= 6 and cafe == "Octane":
+    print("With {0} dollars, I can buy coffee at {1}".format(balance, cafe))
+elif balance < 6 and cafe == "Octane":
+    print("With {0} dollars, I cannot buy coffee at {1}".format(balance, cafe))
+else:
+    if balance >= 5 and cafe == "Galloway":
+        print("With {0} dollars, I can buy coffee at {1}".format(balance, cafe))
+    elif balance < 5 and cafe == "Galloway":
+        print("With {0} dollars, I cannot buy coffee at {1}".format(balance, cafe))
+    else:
+        if balance >= 4 and cafe == "Starbucks":
+            print("With {0} dollars, I can buy coffee at {1}".format(balance, cafe))
+        elif balance < 4 and cafe == "Starbucks":
+            print("With {0} dollars, I cannot buy coffee at {1}".format(balance, cafe))
+        else:
+            if balance >= 3 and cafe == "Revelator":
+                print("With {0} dollars, I can buy coffee at {1}".format(balance, cafe))
+            elif balance < 3 and cafe == "Revelator":
+                print("With {0} dollars, I cannot buy coffee at {1}".format(balance, cafe))
+            else:
+                if balance >= 2 and cafe == "Dunkin":
+                    print("With {0} dollars, I can buy coffee at {1}".format(balance, cafe))
+                elif balance < 2 and cafe == "Dunkin":
+                    print("With {0} dollars, I cannot buy coffee at {1}".format(balance, cafe))
+
+    
+
+Sample_Answer received at this problem:
+
+cafe = "Octane"
+balance = 7.5
+
+#-----------------------------------------------------------
+#Notice that the two possible messages we might print are
+#only different by three characters: we either print 'can'
+#or 'cannot'. So, why not instead make that the variable we
+#change?
+#
+#Most of our code is the same, but notice that we've changed
+#can_afford to a string instead of a boolean:
+
+can_afford = "can"
+
+#Our code is the same, but we change can_afford to "cannot"
+#if we can't afford the coffee instead of changing it to False.
+
+if cafe == "Octane" and balance < 6:
+    can_afford = "cannot"
+if cafe == "Galloway" and balance < 5:
+    can_afford = "cannot"
+if cafe == "Starbucks" and balance < 4:
+    can_afford = "cannot"
+if cafe == "Revelator" and balance < 3:
+    can_afford = "cannot"
+if cafe == "Dunkin" and balance < 2:
+    can_afford = "cannot"
+
+#The benefit to this is that we don't need a final conditional at
+#the end of our program. Instead, we just print the final value
+#of the variable can_afford:
+
+print("With", balance, "dollars, I", can_afford, "buy coffee at", cafe)
+
+#If we could afford it, can_afford is the string "can". If we couldn't,
+#can_afford is the string "cannot". Either way, the message ends up
+#correct!
+
+
+
+    
+3.2.5 SavingGoals:
+
+
+principal = 5000
+rate = 0.05
+time = 5
+goal = 7000
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Recall in problem 2.4.5 you wrote some code that calculated
+#the amount of money in an account based on this formula:
+#
+#   amount = principal * e ^ (rate * time)
+#
+#Those three variables are given above again, as well as a
+#fourth: goal. We want to see if the investment given by
+#these values will exceed the goal. If it will, we want to
+#print this message:
+#
+#  "You'll exceed your goal by [extra money]"
+#
+#If it will not, we want to print this message:
+#
+#  "You'll fall short of your goal by [needed money]"
+#
+#If the investor will meet their goal, [extra money] should
+#be the final amount minus the goal. If the investor will
+#not meet their goal, [needed money] will be the goal minus
+#the final amount.
+#
+#To make the output more legible, though, we want to round
+#the difference to two decimal places. If the difference is
+#contained in a variable called 'difference', then we can
+#do this to round it: rounded_diff = round(difference, 2)
+#
+#Working with new and unfamiliar functions or abilities is
+#part of learning to code, so use this function in your
+#answer!
+
+import math
+
+#Remember, you can access e with math.e.
+
+
+#Add your code here! Feel free to copy your code from 
+#problem 2.4.5.
+
+e = math.e
+amount = (principal * (e**(rate * time)))
+extra_money =  abs(amount - goal)
+if amount > goal:
+    print("You'll exceed your goal by %.2f" % (extra_money))
+else:
+    print("You'll fall short of your goal by %.2f" % (extra_money))
+     
