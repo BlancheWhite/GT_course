@@ -1,0 +1,241 @@
+EveryThird:
+
+mystery_int = 50
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Write a for loop that prints every third number from 1 to
+#mystery_int inclusive (meaning that if mystery_int is 7, it
+#prints 1, 4, and 7). Print each number on a separate line.
+#
+#Hint: There are multiple ways to do this! You might use the
+#modulus operators, or you could use the third argument for
+#range().
+
+
+#Add your code here!
+
+for element in range(1,mystery_int + 1, 3):
+    print(element)
+    
+    
+SumOdds:
+
+mystery_int = 50
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Add some code below that will find and print the sum of
+#every odd number between 0 and mystery_int. This time,
+#exclude the bounds (e.g. if mystery_int was 51, add the odds
+#from 1 to 49, but not 51).
+#
+#Hint: There are multiple ways to do this!
+
+
+#Add your code here!
+sum_of_odds = 0
+for element in range(0,mystery_int):
+    if element % 2 == 0:
+        continue
+    sum_of_odds += element 
+        
+print(sum_of_odds)
+
+
+SumLoop:
+
+mystery_int = -7
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Use a loop to find the sum of all numbers between 0 and
+#mystery_int, including bounds (meaning that if
+#mystery_int = 7, you add 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7).
+#
+#However, there's a twist: mystery_int might be negative.
+#So, if mystery_int was -4, you would -4 + -3 + -2 + -1 + 0.
+#
+#There are a lot of different ways you can do this. Most of
+#them will involve using a conditional to decide whether to
+#add or subtract 1 from mystery_int.
+#
+#You may use either a for loopor a while loop to solve this,
+#although we recommend using a while loop.
+
+
+#Add your code here!
+sum_of_num = 0
+
+if mystery_int > 0:
+    while mystery_int >= 0:
+        sum_of_num += mystery_int
+        mystery_int -= 1
+else:
+    while mystery_int <= 0:
+        sum_of_num += mystery_int
+        mystery_int += 1
+    
+print(sum_of_num)
+
+
+CountingLetters:
+
+
+mystery_string = "Hello! What a fine day it is today."
+mystery_character = "a"
+
+#-----------------------------------------------------------
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Write some code below that will count and print how many
+#times mystery_character appears in mystery_string. You may
+#not use the string class's .count method.
+#
+#With the original values for mystery_string and
+#mystery_character, your code should initially print 4. Only
+#count characters with the same case as mystery_character
+#(in other words, here you would ignore capital A).
+
+
+#Add your code here!
+sum_of_characters = 0
+for element in mystery_string:
+    if element == mystery_character:
+        sum_of_characters += 1
+
+print(sum_of_characters)
+
+
+
+ListsOfStrings:
+
+mystery_list = ["Taylor Swift", "Twenty Two", "Georgia Tech"]
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Above is a list of strings. Don't worry if this syntax is a
+#little unfamiliar, we'll talk you through it and then cover
+#it more in chapter 4.3.
+#
+#Write some code that will count the number of instances of
+#the letter 't' in the list of strings. Count both capital
+#'T' and lower-case 't'. Then, print the number of instances
+#of the letter 't'.
+#
+#For example, with the list declared above, you would print
+#6: two in the first string, three in the second, one in the
+#third.
+#
+#Because we haven't used lists very extensively, we've
+#gotten you started. The loop below will iterate through each
+#string in the list. Next, you want to iterate through each
+#letter in the current string, check if it's a t, and
+#increment a counter if so.
+
+
+#You'll want to add some code before the loop here.
+count_of_t = 0
+for string in mystery_list:
+    for element in string:
+        if element == "t" or element == "T":
+            count_of_t += 1
+    #Add your code to read through the string and count the
+    #t's and T's here!
+
+#Add some code here to print the final tally!
+print(count_of_t)
+
+
+
+PrintTheAlphabet:
+
+start_character = "A"
+end_character = "Z"
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Print all the letters from start_character to end_character,
+#each on their own line. Include start_character and
+#end_character themselves.
+#
+#Remember, you can convert a letter to its underlying ASCII
+#number using the ord() function. ord("A") would give 65.
+#ord("Z") would give 90. You can use these values to write
+#your loop.
+#
+#You can also convert an integer into its corresponding ASCII
+#character using the chr() function. chr(65) would give "A".
+#chr(90) would give "Z". So, for this problem, you'll need
+#to convert back and forth between ordinal values and
+#characters based on whether you're trying to loop over
+#numbers or print letters.
+#
+#You may assume that both start_character and end_character
+#are uppercase letters (although you might find it fun to
+#play around and see what happens if you put other characters
+#in instead!).
+
+
+#Add your code here! With the original values for
+#start_character and end_character, this will print the
+#letters from A to Z, each on their own line.
+
+for element in range(ord(start_character), ord(end_character) + 1):
+    print(chr(element))
+
+
+
+BeatsAndMeasures2:
+
+beats_per_measure = 4
+measures = 5
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Recall our earlier problem where you printed out beats based
+#on measures and beats per measure (3.3.5 Coding Exercise 1).
+#In that exercise, you printing out 1 through the number of beats
+#in a measure over and over depending on the number of measures.
+#
+#Copy and modify your code, but this time, you should replace the
+#number 1 with the number of the current measure. So, the first
+#number in each measure will always rise.
+#
+#For example, instead of 1 2 3 4 1 2 3 4 1 2 3 4 (with each
+#number on its own line), you'd now print 1 2 3 4 2 2 3 4 3 2 3 4,
+#and so on.
+#
+#You can use our sample answer from that problem if you'd prefer.
+#
+#HINT: One approach would involve adding a conditional.
+
+
+#Add your code here! Using the original values of the variables
+#above, this will initially print the following numbers (but each
+#on their own line):
+#1 2 3 4 2 2 3 4 3 2 3 4 4 2 3 4 5 2 3 4
+
+for tempo in range(1,measures + 1):
+    for beat in range(1,beats_per_measure + 1):
+        if beat == 1:
+            beat = tempo
+        
+        print(beat)
+
+
+
