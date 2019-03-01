@@ -1,0 +1,855 @@
+2.2.7 Coding Exercise 1 - ConvertingToStrings:
+
+#In the code below, four variables are created:
+#an integer, a float, a date, and a boolean.
+#
+#Create four new variables: integer_as_string,
+#float_as_string, date_as_string, and
+#boolean_as_string.
+#
+#Convert the corresponding variables to strings.
+#So, boolean_as_string should have the string
+#version of the current value of new_boolean.
+
+from datetime import date
+new_integer = 8
+new_float = 8.2
+new_date = date.today()
+new_boolean = False
+
+integer_as_string = str(new_integer)
+float_as_string = str(new_float)
+date_as_string = str(new_date)
+boolean_as_string = str(new_boolean)
+#The lines of code below will test your code.
+#If it works, they will print the four string
+#values, each followed by "<class 'str'>".
+print(integer_as_string, type(integer_as_string))
+print(float_as_string, type(float_as_string))
+print(date_as_string, type(date_as_string))
+print(boolean_as_string, type(boolean_as_string))
+
+
+2.2.7 Coding Exercise 2 - ConvertingFromStrings:
+
+#In the code below, three strings are created. Only one can be
+#converted to all three data types we're covering here (integers,
+#floats, and booleans). Create three new variables called
+#as_integer, as_float, and as_boolean, select the only variable
+#that can be converted to all three, and convert it.
+#
+#Hint: Python lets you convert anything to a boolean. It
+#interprets any non-empty string or non-zero number as True, and
+#any empty string or number 0 as False.
+
+a = "5.1"
+b = "Hello!"
+c = "5"
+
+#Add your code here!
+
+as_integer = int(c)
+as_float = float(c)
+as_boolean = bool(c)
+
+#The lines of code below will test your submission! If it's
+#working, it will print the value three times, followed by three
+#different types: <class 'int'>, <class 'float'>, and
+#<class 'bool'>.
+print(as_integer, type(as_integer))
+print(as_float, type(as_float))
+print(as_boolean, type(as_boolean))
+
+
+2.2.9 Coding Exercise 1 - PrintDateAndTime:
+
+#Complete the code below. We've gone ahead and created
+#variables for the current date and current time. Now,
+#we want to print date with the format year/month/day,
+#and the time with the format hour:minute:second.
+#
+
+from datetime import date
+import datetime
+todays_date = date.today()
+current_time = datetime.datetime.now()
+
+#Don't modify the code above!
+
+#Complete the line below to print today's date with the
+#form year/month/date. For example, January 15th, 2017
+#would be 2016/1/15.
+
+print(str(todays_date.year) + "/" + str(todays_date.month) + "/" + str(todays_date.day))
+
+#Complete the line below to print the current time with
+#the form hour:minute:second, such as 12:57:15. Don't worry
+#about the leading 0s for single-digit times. If it's
+#1:05PM and 7 seconds, the correct answer would be:
+#13:5:7 (13 because Python uses 24-hour timeby default).
+
+print(str(current_time.hour) + ":" + str(current_time.minute) + ":" + str(current_time.second))
+
+
+Coding Problem 2.2.4 - DaysBetweenDates:
+
+#In the code below, we've created two dates. The day in each
+#date is chosen randomly. You don't need to worry about how
+#this works; all you need to know is that when you start
+#writing your code, you'll have access to two variables, each
+#holding a date: earlier_date and later_date, and later_date
+#is guaranteed to be later than earlier_date.
+#
+#Complete this code so that it creates a variable called
+#days_between that stores the number of days between the two
+#dates.
+#
+#Hint: You can find the number of days between two dates by
+#subtracting the day number of the earlier date from the
+#day number of the later date.
+
+from datetime import date
+import random
+earlier_date = date(2017, 6, random.randint(1, 25))
+later_date = date(2017, 6, random.randint(earlier_date.day + 1, 28))
+
+#Do not modify the code above!
+
+
+#Write your code here!
+
+days_between = (later_date - earlier_date).days
+print(days_between)
+
+#If your code is working correctly, then the following line
+#of code will print the correct number of dayes between the
+#two dates. Notice that this line uses commas instead of plus
+#signs, which is why it doesn't have to convert the dates to
+#strings: Python does that implicitly when we use this syntax.
+print("There are", days_between, "days between", earlier_date, "and", later_date)
+
+
+2.3.3 Coding Exercise 2 - SixVariableComparisons:
+
+from datetime import time
+from datetime import date
+mystery_string_1 = "Hello, world"
+mystery_string_2 = "Hello, world"
+mystery_date_1 = date(2017, 1, 15)
+mystery_date_2 = date(2017, 1, 15)
+mystery_time_1 = time(12, 45)
+mystery_time_2 = time(12, 45)
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#Add code below to print whether or not mystery_string_1 and
+#mystery_string_2 are equal, whether or not mystery_date_1
+#and mystery_date_2 are equal, and whether or not
+#mystery_time_1 and mystery_time_2 are equal.
+print(mystery_string_1 == mystery_string_2)
+print(mystery_date_1 == mystery_date_2)
+print(mystery_time_1 == mystery_time_2)
+    
+
+Coding Problem 2.3.4 - CheckSufficientBalanceOrOD:
+
+balance = 20.0
+price = 21.0
+overdraft_protection = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Last exercise, we printed True if balance was greater than or
+#equal to price, and False otherwise. However, some banks have
+#something called overdraft protection. Overdraft protection
+#means that the customer is allowed to spend more than their
+#balance, and the bank just expects them to deposit the money
+#to cover the purchase later.
+#
+#Write some code below that will print True if the customer
+#can make the purchase given their balance, the purchase
+#price, and whether or not they have overdraft protection.
+#Specifically, the result should be True if balance is greater
+#than or equal to price or if overdraft_protection is True,
+#and False if neither of these are true.
+
+
+#Add your code here!
+print((balance >= price) or overdraft_protection)
+
+
+Coding Problem 2.3.5 - BooleanweatherRecs:
+
+hot = True
+cold = False
+rainy = True
+windy = False
+snowy = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Imagine you're writing a clothing-recommendation app that
+#makes suggestions based on the weather. It has booleans
+#representing five different kinds of weather: hot, cold,
+#rainy, windy, snowy.
+#
+#The app recommends four kinds of clothing:
+#
+# - a jacket, if it's either cold or windy.
+# - boots, if it's cold and snowy.
+# - flip flops, if it's hot, unless it's rainy.
+# - a t-shirt, if it's hot, unless it's rainy or windy.
+#
+#Write some code below that will print four lines, one for
+#each of the four types of clothing. Under the original
+#values for the variables above, the lines should look
+#like this:
+#
+#Jacket: False
+#Boots: False
+#Flip-Flops: False
+#T-shirt: False
+
+#Add your code here!
+
+Jacket = cold or windy
+Boots = cold and snowy
+FlipFlops = hot and not rainy
+Tshirt = hot and (not rainy or not windy)
+
+print("Jacket:", Jacket)
+print("Boots:", Boots)
+print("Flip-Flops:", FlipFlops)
+print("T-shirt:", Tshirt)
+
+
+Coding Problem 2.3.6 - JacketString:
+
+cold = False
+windy = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#In this problem, we want to print the message, "You should
+#wear a jacket today!" if it's cold or windy, or the message
+#"You don't need a jacket today!" if it's not.
+#
+#At the bottom of this file, we've added some code that
+#handles printing these two messages. For this code to work,
+#the variable need_jacket needs to exist. Its value should be
+#True (the boolean, not the string) if it's cold or windy,
+#False if it's neither cold nor windy.
+
+
+#Add your code to create the variable need_jacket with the
+#appropriate value here!
+
+need_jacket = cold or windy
+
+#Do not modify the code below. It will work if you have
+#correctly create the variable need_jacket with the
+#appropriate value.
+if need_jacket:
+    print("You should wear a jacket today!")
+else:
+    print("You don't need a jacket today!")
+
+
+Coding Problem 2.3.7 - MyEmotions:
+
+busy = True
+hungry = False
+tired = True
+stressed = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#Logical operators get more complex when we start using them
+#with the results of other logical operators. So, let's try
+#it out!
+#Using the variables above, we want to assess whether the
+#person is happy, sad, bored, confused, or anxious.
+# - The person is happy if they're busy but not stressed.
+# - The person is sad if they're either hungry or tired.
+# - The person is confused if they're both happy and sad.
+# - The person is bored if they're neither happy, sad,
+#   nor busy.
+# - The person is anxious if they're neither happy nor sad,
+#   but they are stressed.
+#
+#Add code below whose output will list whether each of these
+#emotions is true or false. For example, with the original
+#values of the variables above, this would print:
+#
+#Happy: True
+#Sad: True
+#Confused: True
+#Bored: False
+#Anxious: False
+
+#Add your code here!
+
+happy = busy and not stressed
+sad = hungry or tired
+confused = happy and sad
+bored = not happy and not sad and not busy
+anxious = stressed and (not happy and not sad)
+print("Happy:", happy)
+print("Sad:", sad)
+print("Confused:", confused)
+print("Bored:", bored)
+print("Anxious:", anxious)
+
+
+Coding Problem 2.3.8 - SpringBreakPlanning:
+
+can_afford = True
+destination_is_safe = True
+educational_value = True
+relatives_nearby = True
+is_international = True
+have_passport = True
+afraid_to_fly = True
+have_a_car = True
+is_a_beach = True
+is_warm = False
+has_skiing = True
+is_a_city = True
+is_off_peak = True
+has_attraction = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Imagine for a moment that you're a college student who wants
+#to travel during spring break. You have a destination in
+#mind. What determines whether you can go there?
+#
+#First, how would you pay for the trip? If you can afford it
+#(can_afford), then all you need is for your parents to agree
+#to let you go. Your parents will agree to let you go if the
+#destination is safe (destination_is_safe). 
+#
+#If you can't afford it, then you need your parents to pay for
+#the trip. Your parents will pay for the trip if the destination
+#is safe (destination_is_safe) and if either there is educational
+#value (educational_value) or there are relatives nearby for
+#you to visit (relatives_nearby).
+#
+#Second, are you sure you're able to go to this location? If
+#it's international (is_international), then you'll need a
+#passport (have_passport) and you can't be afraid to fly
+#(afraid_to_fly). If it's not international (is_international),
+#then you either must have a car (have_a_car) or you can't be
+#afraid to fly (afraid_to_fly).
+#
+#Third, do you actually want to go to this location? If it's a
+#beach location (is_a_beach), then you want the weather to be
+#warm (is_warm). If it's instead a skiing location (has_skiing),
+#you don't want it to be warm (is_warm). If it's a tourist city
+#(is_a_city), then you either want it to be an off-peak travel
+#time (is_off_peak) or you want there to be an attraction in
+#town that week (has_attraction).
+#
+#If it's both a beach and a city, then you'd decide to go if it
+#meets the condition for the beach (it's warm) or for a city
+#(is an off-peak time or has an attraction). If it's both a
+#skiing location and a city, then you'd decide to go if it meets
+#either type of location's conditions as well.
+#
+#Your only goal here is to print True or False: True if the
+#destination represented by the variables is an acceptable
+#travel location, False if it is not.
+
+#Add your code here!
+go_trip = (can_afford and destination_is_safe) or (not can_afford and destination_is_safe and (relatives_nearby or educational_value))
+
+go_trip2 = (is_international and have_passport and not afraid_to_fly) or (not is_international and (have_a_car or not afraid_to_fly))
+
+go_trip3 = (is_a_beach and is_warm) or (has_skiing and not is_warm) or (is_a_city and (is_off_peak or has_attraction))
+
+go_trip4 = (is_a_beach and is_a_city and (is_warm or is_off_peak or has_attraction)) or (has_skiing and is_a_city and (not is_warm or is_off_peak or has_attraction))
+
+Amsterdam = go_trip and go_trip2 and (go_trip3 or go_trip4)
+print(Amsterdam)
+
+
+Interlude 2.4.1 Coding Exercise - CoulombsParentheses:
+
+q1 = 5
+q2 = -10
+r = 5
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#Below is some code that calculates electric potential energy
+#based on Coulomb's law. However, it's presently broken, and
+#can be fixed solely by fixing the parentheses.
+#
+#Fix this code. When it's correct, it should print:
+#The electric potential energy is -89877424379.88
+
+from math import pi
+e = 8.854 * 10 ** -12
+
+val_1 = (1 / (4 * pi * e))
+val_2 = (q1 * q2) / r
+
+print("The electric potential energy is", round((val_1 * val_2), 2))
+
+
+Coding Problem 2.4.2 - MakingChange:
+
+amount = 102
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#Write a program that will print out the coins needed to
+#arrive at the amount shown above. Assume that we always want
+#the maximum number of large coins: for example, for 67 cents,
+#we want 2 quarters, 1 dime, 1 nickel, and 2 pennies instead
+#of 6 dimes and 7 pennies.
+#
+#If you are unfamiliar with American currency: a quarter is
+#worth 25 cents; a dime is worth 10 cents; a nickel is worth
+#5 cents; a penny is worth 1 cent.
+#
+#To make things easier, we've gone ahead and supplied your
+#print statements. All you need to do is create four variables:
+#quarters, dimes, nickels, and pennies.
+#
+#HINT: Change the value of amount as you go to reflect what
+#coins you've already found.
+
+
+#Add your code here!
+quarters = amount // 25
+amount -= quarters * 25
+
+dimes = amount // 10
+amount -= dimes * 10
+
+nickels = amount // 5
+amount -= nickels * 5
+
+pennies = amount // 1
+
+
+#If your code above is correct, the following lines will
+#initially print (for amount = 67):
+#Quarters: 2
+#Dimes: 1
+#Nickels: 1
+#Pennies: 2
+print("Quarters:", quarters)
+print("Dimes:", dimes)
+print("Nickels:", nickels)
+print("Pennies:", pennies)
+
+
+Coding Problem 2.4.3 - TipTaxCalculator:
+
+meal_cost = 10.00
+tax_rate = 0.08
+tip_rate = 0.20
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#When eating at a restaurant in the United States, it's
+#customary to have two percentage-based surcharges added on
+#top of your bill: sales tax and tip. These percentages are
+#both applies to the original cost of the meal. For example,
+#a 10.00 meal with 8% sales tax and 20% tip would add 0.80
+#for tax (0.08 * 10.00) and 2.00 for tip (0.20 * 10.00).
+#
+#The variables above create the cost of a meal and identify
+#what percentage should be charged for tax and tip.
+#
+#Add some code below that will print the "receipt" for a
+#meal purchase. The receipt should look like this:
+#
+#Subtotal: 10.00
+#Tax: 0.8
+#Tip: 2.0
+#Total: 12.8
+#
+#Add your code here!
+
+tax_rate *= meal_cost
+tip_rate *= meal_cost
+total = meal_cost + tax_rate + tip_rate
+
+print("Subtotal:", meal_cost)
+print("Tax:", tax_rate)
+print("Tip:", tip_rate)
+print("Total:", total)
+
+
+Coding Problem 2.4.4 - PokemonDamage:
+
+STAB = 1
+Type = 0.25
+Critical = 2
+Other = 1
+Random = 1
+Level = 50
+Attack = 125
+Defense = 110
+Base = 60
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#In the Pokemon game franchise, damage is calculated using this formula:
+#https://studio.edx.org/asset-v1:GTx+CS1301+1T2017+type@asset+block@DamageCalc.png
+#
+#In that formula, the variable Modifier is calculated using this formula:
+#https://studio.edx.org/asset-v1:GTx+CS1301+1T2017+type@asset+block@ModifierCalc.png
+#
+#Add code below such that the program prints the total damage
+#caused based on the STAB, Type, Critical, Other, Random,
+#Level, Attack, Defense, and Base given above.
+#
+#Hint: Don't try to do all these calculations at once! Break
+#the complicated formual down into bite-sized little chunks.
+
+#Add your code here!
+Modifier = STAB * Type * Critical * Other * Random
+Damage1 = (((2 * Level + 10) / 250) * (Attack / Defense) * Base + 2)
+Damage = Damage1 * Modifier
+
+print(Damage)
+
+
+Codin Problem 2.4.5 - ContinuouslyCompoundingIntegers:
+
+principal = 5000
+rate = 0.05
+time = 5
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#One important formula in finance and accounting is the
+#formula for continually compounding interest. This formula
+#takes as input an amount of money invested, an interest
+#rate, and an amount of time (in years), and returns the
+#value of the investment after that period of time.
+#
+#The formula is:
+#
+#   amount = principal * e ^ (rate * time)
+#
+#Add some code below that will find the amount of money in
+#an account with the initial investment, interest rate, and
+#number of years given by the variables above. Note,
+#however, that we've gone ahead and supplied you the print
+#statement: you shouldn't need to change this. Instead, just
+#complete this code such that the variable 'amount' is
+#created with the right value.
+#
+#Note that e is a constant; you may access it with math.e --
+#you can use math.e as a variable like any other after
+#importing math:
+
+import math
+
+#Add your code here such that there exists a variable named
+#'amount' with the amount in the account after the given
+#time at the given interest rate.
+
+e = math.e
+amount = (principal * (e**(rate * time)))
+
+#Don't touch the line of code below!
+print("After " + str(time) + " years invested with a " + str(rate) + " interest rate, a $" + str(principal) + " investment will be worth $" + str(round(amount, 2)) + ".")
+
+
+Coding Problem 2.4.6 - CalculateTime:
+
+start_hour = 3
+start_minute = 48
+length = 172
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Let's try something trickier! The variables above represent
+#the start time for a run as well as the length of the run
+#in minutes. The original values, for example, show a run
+#that started at 3:48 and lasted 172 minutes.
+#
+#Add some code below that will print the time at which the
+#run will end, using normal formatting (e.g. 6:40 for the
+#original data above). To do this, you'll need to somehow
+#find both the hours and minutes of the new time, convert
+#both to strings, and add those to the colon ":" to print
+#the time.
+#
+#You may assume that the length of the run will never cross
+#12:59 (e.g. you don't have to worry about going from
+#12:59 to 1:00 or 23:59 to 0:00). You also don't need to
+#worry about the lack of 0 in front of single-digit minute
+#counts (e.g. it's fine to show 5:07 as 5:7).
+
+
+#Add your code here!
+hour = 60
+length_in_hours = length // hour
+length -= length_in_hours * hour
+
+extra_minute = (start_minute + length) // hour
+
+
+end_hour = str(start_hour + length_in_hours + extra_minute)
+
+end_minute = str((start_minute + length) % hour)
+
+print(end_hour + ":" + end_minute)
+
+
+Coding Problem 2.4.7 - CoughSyrup:
+
+dosage = 100
+time_since_last_dose = 7
+is_nighttime = False
+took_something_cross_reactive = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#Let's try to use our mathematical operators and logical
+#operators together.
+#
+#Imagine you've been battling a cold. You're deciding whether
+#to take cough syrup or not, and if so, how much to take.
+#
+#time_since_last_dose represents the number of hours since
+#you last took some cough syrup. For every hour it's been,
+#you're allowed to have one dose.
+#
+#If it's nighttime (is_nighttime), then you may double
+#your dose since you won't be taking any until morning.
+#
+#However, if you've taken something cross-reactive
+#(took_something_cross_reactive), then you should not take
+#any cough syrup.
+#
+#Write a program that will print how large a dose of cough
+#syrup to take.
+#
+#HINT: Remember, if you try to multiply a number times a
+#boolean, Python treats False as 0 and True as 1. There are
+#other ways to do this, though.
+
+
+#Add your code here!
+dose = 0
+if took_something_cross_reactive == True:
+    dose
+elif is_nighttime == True:
+    dose = time_since_last_dose * dosage * 2
+else:
+    dose = dosage * time_since_last_dose
+    
+print(dose)
+
+Coding PRoblem 2.4.8 - StringDotFormat:
+
+mystery_value_1 = 6
+mystery_value_2 = 3
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#Print a sentence describing the values you get when you add,
+#subtract, multiply, and divide the numbers above. The
+#sentence should look like this:
+#
+#The sum is 9, the difference is 3, the product is 18, and the
+#quotient is 2.0.
+#
+#Make sure to include all commas, spaces, and periods exactly
+#as shown -- the only thing that should change based on the
+#values of the variables is the numbers.
+
+
+#Add your code here!
+add = mystery_value_1 + mystery_value_2
+substract = mystery_value_1 - mystery_value_2
+multiply = mystery_value_1 * mystery_value_2
+divide = mystery_value_1 / mystery_value_2
+
+my_string = "The sum is {0}, the difference is {1}, the product is {2}, and the quotient is {3}.".format(add, substract, multiply, divide)
+print(my_string)
+
+
+Coding Problem 4 - TotalMortgage:
+
+cost = 150000
+rate = 0.0415
+years = 15
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#When taking out a mortgage (a type of loan) for a house, the
+#mortgage is defined by three variables: the total cost of the
+#house, the interest rate at which you will pay back the
+#mortgage, and how many months you have to pay back the
+#mortgage.
+#
+#The formula to find the total amount of money that will be
+#paid over that time is:
+#
+#  Cost * Number of Months * Monthly Rate /
+#  1 - ((1 + Monthly Rate) ^ -Number of Months))
+#
+#Note that both time and rate are based on months: to find the
+#monhtly rate, divide the annual rate by 12. To find the number
+#of months, multiply the number of years by 12.
+#
+#Write some code that prints out a sentence like the following
+#based on the original cost, interest rate, and number of years
+#given above:
+#
+# The total cost of the house will be $201751.36
+#
+#You should round the total cost to two decimal places. You can
+#do this with this line, assuming the actual value of the
+#mortgage is stored in final_cost: final_cost = round(final_cost, 2)
+import math
+#Add your code here!
+months = years * 12
+monthly_rate = rate / 12
+total_cost = cost * months * monthly_rate / (1 - ((1 + monthly_rate) ** -months))
+total_cost = round(total_cost,2)
+
+print("The total cost of the house will be $" + str(total_cost))
+
+
+Coding Problem 5 - ConvertToBinary:
+
+number = 215
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+#
+#The number above is given in base 10. Let's convert it to
+#base 2 and print it in binary. For example, 215 can be written
+#in binary as 11010111.
+#
+#Each digit of that string corresponds to a power of 2. The far
+#left digit represents 128, then 64, then 32, then 16, then 8,
+#then 4, then 2, and then finally 1 at the far right.
+#
+#To convert the number to binary, first check to see if it is
+#greater than or equal to 128. If it is, your first digit is 1.
+#If not, your first digit is 0. If the number was greater than
+#128, subtract 128 (because the 128 is captured by the first
+#digit of the string).
+#
+#Then, repeat that process for 64, 32, 16, 8, 4, 2, and 1.
+#
+#For example:
+#
+#215 is >= 128: 1
+#87 is >= 64: 11
+#23 is not >= 32: 110
+#23 is >= 16: 1101
+#7 is not >= 8: 11010
+#7 is >= 4: 110101
+#3 is >= 2: 1101011
+#1 is >= 1: 11010111
+#
+#Note that although we use 'if' a lot to describe this problem,
+#this can be done entirely with floor division and modulus.
+#Remember, if you convert a boolean to an integer, True becomes
+#1 and False becomes 0.
+#
+#Note that we always work with binary in 8-bit chunks: the
+#number 7 would be 00000111, not just 111. That's because inside
+#the computer, 8 1s and 0s make a byte, which is the smallest
+#practical unit of storage (rarely are bits used outside 8-bit
+#bytes).
+#
+#Print the string that results from this conversion.
+#Add your code here!
+test = number // 128 
+number %= 128
+test1 = number // 64
+number %= 64
+test2 = number // 32 
+number %= 32
+test3 = number // 16
+number %= 16
+test4 = number // 8 
+number %= 8
+test5 = number // 4
+number %= 4
+test6 = number // 2 
+number %= 2
+test7 = number // 1
+number %= 1
+
+print(str(test) + str(test1) + str(test2) + str(test3) + str(test4) + str(test5) + str(test6) + str(test7))
+
+
+Coding Problem 8 - DueDate:
+
+current_hour = 12
+current_minute = 37
+current_section = "PM"
+due_hour = 9
+due_minute = 0
+due_section = "AM"
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Given the current time and deadline time represented by the
+#variables above, determine if an assignment is still eligible
+#for submission. An assignment is eligible if the time
+#represented by current_hour, current_minute, and
+#current_section is before the time represented by due_hour,
+#due_minute, and due_section.
+
+import datetime
+#Add your code here!
+
+current_time = str(current_hour) + ":" + str(current_minute) + " " + current_section
+
+current_object = datetime.datetime.strptime(current_time, "%I:%M %p").time()
+
+due_time = str(due_hour) + ":" + str(due_minute) + " " + due_section
+due_object = datetime.datetime.strptime(due_time, "%I:%M %p").time()
+
+is_eligible = current_object < due_object
+
+print(is_eligible)
+
+
