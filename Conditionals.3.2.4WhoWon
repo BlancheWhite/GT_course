@@ -1,0 +1,112 @@
+3.2.4 WhoWon:
+
+team_1 = "Georgia Tech"
+team_1_score = 28
+team_2 = "Georgia"
+team_2_score = 27
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Above we've created four variables: two team names and two
+#scores. A team wins if their score is greater than the other
+#team's score.
+#
+#Add to the code below. To print a messages like these
+#depending on the values:
+#
+# - If one team beat the other, print:
+#     "[winner] beat [loser] by [margin]"
+# - If neither team won, print:
+#     "[team_1] played [team_2] and it was a tie"
+#
+#For example, with the original values in this code, you
+#should print "Georgia Tech beat Georgia by 1"
+#
+#Hint: to make this easier, create three variables: winner,
+#loser, and margin. Then, find their values before worrying
+#about printing the final message.
+
+
+#Add your code here!
+winner = None
+loser = None
+margin = None
+
+#Add your code here!
+if team_1_score > team_2_score:
+    winner = team_1
+    loser = team_2
+    margin = team_1_score - team_2_score
+elif  team_1_score < team_2_score:
+    winner = team_2
+    loser = team_1
+    margin = team_2_score - team_1_score
+else:
+    print(team_1, "played", team_2, "and it was a tie")
+   
+if winner == team_1 or winner == team_2:
+    print(winner, "beat", loser, "by", margin)
+
+
+3.2.6 Outfit:
+
+sunny = True
+windy = False
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Below, we've gone ahead and written some code that uses a
+#conditional to print a message based on the variables above.
+#Revise this code so that it uses nested conditionals instead
+#of the 'and' operator. There should be _no_ instances of the
+#'and' reserved word in your code, but it should behave the
+#same as it did originally.
+
+if sunny:
+    if not windy:
+        print("Wear a hat!")
+    
+if sunny:
+    if windy:
+        print("Enjoy the breeze!")
+        
+        
+ 3.2.6 PasswordCheck:
+ 
+ entered = "abc123"
+password = "abc123"
+tries = 4
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Above we've created three variables representing an attempt
+#to enter a password. Add some code below that will print the
+#result of this check:
+#
+# - "Login successful." if entered is the same as password
+#   and tries is less than or equal to 3.
+# - "Incorrect password." if entered is not the same as 
+#   password, but tries is less than or equal to 3.
+# - "Tries exceeded." if tries is greater than 3.
+#
+#You don't need to worry about incrementing tries if the
+#password is incorrect.
+
+
+#Add your code here!
+if tries <= 3:
+    if password == entered:
+        print("Login successful.")
+    else:
+        print("Incorrect password.")
+        tries += 1
+else:
+    print("Tries exceeded.")
+    
+        
