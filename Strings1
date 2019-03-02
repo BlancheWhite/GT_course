@@ -1,0 +1,250 @@
+RandomMarks:
+
+#Write a function called random_marks. random_marks should
+#take three parameters, all integers. It should return a
+#string.
+#
+#The first parameter represents how many apostrophes should
+#be in the string. The second parameter represents how many
+#quotation marks should be in the string. The third
+#parameter represents how many apostrophe-quotation mark
+#pairs should be in the string.
+#
+#For example, random_marks(3, 2, 3) would return this
+#string: #'''""'"'"'"
+#
+#Note that there are three apostrophes, then two quotation
+#marks, then three '" pairs.
+
+
+#Add your function here!
+def random_marks(apostrophes,quotations,pairs):
+    a = "'" * apostrophes
+    q = '"' * quotations
+    p = ''''"''' * pairs
+    return a + q + p
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: '''""'"'"'"
+
+print(random_marks(3, 2, 3))
+
+
+Steps:
+
+#Write a function called "steps" that should return a string 
+#that, if printed, looks like this:
+#
+#111
+#	222
+#		333
+#
+#Note that the characters at the beginning of the second and
+#third lines must be tabs, not spaces. There should be one
+#tab on the second line and two on the third line.
+#
+#You may only declare ONE string in your function.
+#
+#Hint: Don't overthink this! We're literally just asking you
+#to return one single string that just holds the above text.
+#You don't have to build the string dynamically or anything.
+
+
+#Write your function here!
+def steps():
+    return "111\n\t222\n\t\t333"
+
+
+#The line below will test your function.
+print(steps())
+
+
+AlignRight:
+
+#-----------------------------------------------------------
+#Write a function called align_right. align_right should
+#take two parameters: a string (a_string) and an integer
+#(string_length), in that order.
+#
+#The function should return the same string with spaces
+#added to the left so that the text is "right aligned" in a
+#string. The number of spaces added should make the total
+#string length equal string_length.
+#
+#For example: align_right("CS1301", 10) would return the
+#string "    CS1301". Four spaces are added to the left so
+#"CS1301" is right-aligned and the total string length is
+#10.
+#
+#HINT: Remember, len(a_string) will give you the number of
+#characters currently in a_string.
+
+
+#Add your function here!
+def align_right(a_string, string_length):
+    a = ""
+    a += a_string
+    b = string_length - len(a)
+    a = " " * b + a
+    return a
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "    CS1301"
+print(align_right("CS1301", 10))
+
+
+LastN:
+
+#Write a function called "last_n" that accepts two arguments:
+#a string search_string and an integer n. The function should
+#return the last n characters from search_string. If
+#search_string is shorter than n characters, then it should
+#return the entire value of search_string.
+
+
+#Write your function here!
+def last_n(search_string, n):
+    return search_string[-n:]
+
+
+#The code below will test your function. If your function
+#works correctly, this should print 789, saur, and 1.
+print(last_n("123456789", 3))
+print(last_n("Bulbasaur", 4))
+print(last_n("1", 5))
+
+
+Scramble:
+
+#Write a function called "scramble" that accepts a string
+#as an argument and returns a new string. The new string 
+#should start with the last half of the original string
+#and end with the first half. 
+#
+#If the length of the string is odd, split the string 
+#at the floor of the length / 2 (in other words, the second
+#half is the longer half).
+#
+#For example:
+#  scramble("abcd") -> "cdab"
+#  screamble("abcde") -> "cdeab"
+#  scramble("railroad")) -> "roadrail"
+#  scramble("fireworks")) -> "worksfire"
+
+
+#Write your function here!
+def scramble(a_string):
+    first_half = len(a_string) // 2
+    new_string = a_string[first_half:] + a_string[:first_half]
+    return new_string
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print the results you see in the examples above.
+
+string1 = "abcd"
+string2 = "abcde"
+string3 = "railroad"
+string4 = "fireworks"
+print(string1 + " -> " + scramble(string1))
+print(string2 + " -> " + scramble(string2))
+print(string3 + " -> " + scramble(string3))
+print(string4 + " -> " + scramble(string4))
+
+
+
+FancyFind:
+
+#Write a function called fancy_find. fancy_find should have
+#two parameters: search_within and search_for.
+#
+#fancy_find should check if search_for is found within the
+#string search_within. If it is, it should print the message
+#"[search_for] found at index [index]!", with [search_for]
+#and [index] replaced by the value of search_for and the
+#index at which it is found. If search_for is not found
+#within search_within, it should print, "[search_for] was
+#not found within [search_within]!", again with the values
+#of search_for and search_within.
+#
+#For example:
+#
+#  fancy_find("ABCDEF", "DEF") -> "DEF found at index 3!"
+#  fancy_find("ABCDEF", "GHI") -> "GHI was not found within ABCDEF!"
+
+
+#Add your function here!
+def fancy_find(search_within, search_for):
+    if search_for in search_within:
+        index = search_within.find(search_for)
+        return search_for + " found at index " + str(index) + "!"
+    else:
+        return search_for + " was not found within " + search_within + "!"
+        
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#DEF found at index 3!
+#GHI was not found within ABCDEF!
+
+print(fancy_find("ABCDEF", "DEF"))
+print(fancy_find("ABCDEF", "GHI"))
+
+
+
+NumWords:
+
+#Recall in Unit 3 you wrote a function that would count the
+#number of words in a string using loops. Now that you know
+#something about string methods, though, let's do that again
+#using a different approach.
+#
+#Write a function called "num_words" that accepts a string 
+#as an argument and returns the number of words in the 
+#string. You can assume all words are separated by a space,
+#and that the string has at least one word. You do not need
+#to worry about punctuation.
+#
+#For example:
+#
+#  num_words("Veni, Vidi, Vici.") -> 3
+#
+#This time, you may not use any loops. Hint: split() might
+#come in handy.
+
+
+#Write your function here!
+def num_words(a_string):
+    count = len(a_string.split(" "))
+    return count
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 3, 2, 1, each on their own line.
+print(num_words("Vini, Vidi, Vici."))
+print(num_words("Hello, world!"))
+print(num_words("HeyDavidwhyaren'ttherespacesinthissentence"))
+
+
