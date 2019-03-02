@@ -1,0 +1,149 @@
+NestedLoops:
+
+mystery_int = 5
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#This is a tough one! Stick with it, you can do it!
+#
+#Write a program that will print the times table for the
+#value given by mystery_int. The times table should print a
+#two-column table of the products of every combination of
+#two numbers from 1 through mystery_int. Separate consecutive
+#numbers with either spaces or tabs, whichever you prefer.
+#
+#For example, if mystery_int is 5, this could print:
+#
+#1	2	3	4	5
+#2	4	6	8	10
+#3	6	9	12	15
+#4	8	12	16	20
+#5	10	15	20	25
+#
+#To do this, you'll want to use two nested for loops; the
+#first one will print rows, and the second will print columns
+#within each row.
+#
+#Hint: How can you print the numbers across the row without
+#starting a new line each time? With what you know now, you
+#could build the string for the row, but only print it once
+#you've finished the row. There are other ways, but that's
+#how to do it using only what we've covered so far.
+#
+#Hint 2: To insert a tab into a string, use the character
+#sequence "\t". For example, "1\t2" will print as "1	2".
+#
+#Hint 3: Need to just start a new line without printing
+#anything else? Just call print() with no arguments in the
+#parentheses.
+#
+#Hint 4: If you're stuck, try first just printing out all
+#the products in one flat list, each on its own line. Once
+#that's working, then worry about how to organize it into
+#a table.
+
+
+#Add your code here!
+product = 0
+for element in range(1, mystery_int + 1):
+    for number in range(1, mystery_int + 1):
+        product = str(element * number)
+        print(product,"\t",end="")
+    print()
+
+
+
+PrintingStringSegments:
+
+mystery_string = "Lucy"
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#There's an easy way to do this exercise, and a hard way. For
+#a hint on the easier way, revisit the sample answers for the
+#previous coding exercise.
+#
+#Above we've created a variable called mystery_string. Write
+#some code that will print the first letter of the string on
+#the first line, the first two letters on the second line,
+#the first three letters on the third line, etc., until it
+#prints the entire string on the last line.
+#
+#For example, if the string was "Lucy", then the output would
+#be:
+#
+#L
+#Lu
+#Luc
+#Lucy
+#
+#Hint: to print without automatically starting a new line,
+#include the text end="" inside the print statement's
+#parentheses. For example, print("Hello", end="") will print
+#the word "Hello" without starting a new line afterward. So,
+#calling it twice would print "HelloHello" on one line
+#instead of two lines.
+
+
+#Add your code here!
+
+for i in range(1, len(mystery_string) +1):
+    result =""
+    for x in range(i):
+        result += mystery_string[x]
+    print(result, end="")
+    print("")
+
+Sample_answer:
+
+mystery_string = "Lucy"
+
+#This method uses information you'll learn in Chapter 4.2.
+#Here's a preview in the meantime, though:
+
+for i in range(1, len(mystery_string) + 1):
+    print(mystery_string[0:i])
+
+#Only two lines! Note that this method uses some unfamiliar
+#syntax: mystery_string[0:i]. These brackets tell Python to
+#return only the part of the string starting at index 0 and
+#ending before index i. So, the first time the loop runs,
+#i is 1, so this resolves to mystery_string[0:1]. So, Python
+#returns the string starting at index 0 ("L") and ending
+#before index 1 ("u"), which is just the string "L". When i
+#is 2, it returns "Lu". When i is 3, it returns "Luc".
+
+
+
+CountingCats:
+
+mystery_string = "my cat your cat"
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Add some code below that will count and print how many
+#times the character sequence "cat" appears in mystery_string.
+#For example, for the string above, it would print 2.
+#
+#This one is tricky! Think carefully about for-each loops,
+#conditionals, and booleans. How can you track what character
+#you're currently looking for? We expect you'll use a loop
+#and a single big conditional, but there are other approaches
+#as well. Try to stick with the topics we've covered so far.
+
+
+#Add your code here!
+count = 0
+for i in range(len(mystery_string)):
+    if mystery_string[i] == "c" and mystery_string[i+1] == "a" and mystery_string[i+2] == "t":
+        count += 1
+    
+        
+print(count)
+        
