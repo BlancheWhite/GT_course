@@ -1,0 +1,386 @@
+StringLengthTuples:
+
+#Write a function called string_length. string_length should
+#have one parameter, a string. It should return a 2-tuple:
+#the first item in the 2-tuple should be the string itself,
+#and the second item should be the length of the string as
+#given by the len() function.
+
+
+#Write your function here!
+def string_length(a_string):
+    seconditem = len(a_string)
+    a = (a_string, seconditem)
+    return a
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 
+print(string_length("Hello, world!"))
+print(string_length("CS1301"))
+print(string_length("Some people pronounce it 'toople'. Others pronounce it 'tuhple'. Either is correct."))
+
+
+
+PackRat:
+
+#Write a function called unpack_and_reverse that will
+#accept one parameter, a tuple with at least three items.
+#The function should return a new tuple with only the first
+#three items, but listed in reverse order.
+#
+#For example:
+#
+# a_tuple = ("a", "b", "c", "d", "e")
+# unpack_and_reverse(a_tuple) -> ("c", "b", "a")
+#
+#However, to do this, you should not access any value in
+#the tuple directly (e.g. with a_tuple[1]). Instead, you
+#should use tuple unpacking to unpack them into variables.
+#You also should not touch any items past the third item
+#in the tuple: use tuple slicing instead to only access
+#the first three.
+
+
+#Write your function here!
+def unpack_and_reverse(tuple3):
+    return tuple3[:3][::-1]
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#('c', 'b', 'a')
+#('h', 'g', 'f')
+#('k', 'j', 'i')
+print(unpack_and_reverse(("a", "b", "c", "d", "e")))
+print(unpack_and_reverse(("f", "g", "h")))
+print(unpack_and_reverse(("i", "j", "k", "l", "m", "n", "o", "p", "q", "r")))
+
+
+
+OrdinalTuple:
+
+#Remember asciitable.com from an earlier exercise? We're
+#going to use it again. Remember, ordinal values for
+#characters are given in the 'Dec' column of asciitable.com.
+#
+#Write a function called character_info. character_info will
+#take as input a string with only one character. It should
+#return a 3-tuple with three pieces of information:
+#
+# - In the first spot, the character itself.
+# - In the second spot, the ordinal value of the character,
+#   obtained using the ord() function (e.g. ord("a") -> 97).
+# - In the third spot, what type of character it is: either
+#   "letter", "number", or "punctuation".
+#
+#You may assume that anything that is not a letter (either
+#upper or lower case) or a number is punctuation. You may
+#also assume the ordinal will be between 32 (" ") and 126
+#("~").
+
+
+#Write your function here!
+def character_info(s):
+    if ord(s) >=48 and ord(s) <= 57:
+        third = "number"
+    elif ord(s) >= 65 and ord(s) <= 90 or ord(s) >= 97 and ord(s) <= 122:
+        third = "letter"
+    else:
+        third = "punctuation"
+    return (s, ord(s), third)
+    
+        
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#('q', 113, 'letter')
+#('7', 55, 'number')
+#('`', 96, 'punctuation')
+print(character_info("q"))
+print(character_info("7"))
+print(character_info("`"))
+
+
+
+Modify:
+
+#Write a function called modify_list. modify_list will
+#take one parameter, a list. It should then modify the
+#list in the following ways, in this order:
+#
+# - Sort the list (using the default sort method).
+# - Reverse the order of the list.
+# - Delete the last three items of the list.
+# - Removes one instance the integer 7 from the list, if
+#   it's present.
+# - Double the values of the first and third items in
+#   the list.
+#
+#It should then return the resulting list. You may assume
+#the list will start with at least six items.
+#
+#Hint: Remember Python is 0-indexed. The second item
+#does not have an index of 2.
+#
+#Hint 2: Remember, the list.remove() function removes items
+#by value, not by index. Note also that if the item you're
+#trying to remove is not found in the list, remove() will
+#throw an error: so, you'll want to avoid that one way or
+#another!
+
+
+#Write your code here!
+def modify_list(aList):
+    aList.sort()
+    aList.reverse()
+    del aList[-3:]
+    try:
+        aList.remove(7)
+    except:
+        aList[0] *= 2
+        aList[2] *= 2
+    else:
+        aList[0] *= 2
+        aList[2] *= 2
+    return aList
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#[178, 81, 75.0, 4, 3.141592653589793, 3]
+import math
+print(modify_list([7, 4, 3, 2.0, 81, 37.5, 89, math.pi, -2, math.e]))
+
+
+
+MultiplyStringList:
+
+#Write a function called multiply_strings. Multiply
+#strings should have one parameter, a list of strings.
+#It should return a modified list according to the
+#following changes:
+#
+# - Every string stored at an even index should be
+#   doubled.
+# - Every string stored at an index that is a multiple
+#   of 3 should be tripled.
+# - Every other string should remain unchanged.
+#
+#These changes should "stack": the string stored at index
+#6 should be duplicated six times (2 * 3).
+#
+#Then, return the new list. You may assume that 0 is a
+#multiple of 2 and 3.
+#
+#Hint: To do this, you need to modify the values of the
+#list using their indices, e.g. a_list[1]. If you're not
+#using their indices, your answer won't work!
+
+
+#Write your function here!
+def multiply_strings(aList):
+    newList = []
+    for element in aList:
+        if aList.index(element) in range(0,len(aList),2):
+            if aList.index(element) in range(0,len(aList),3):
+                newList.append(element * 6)
+            elif aList.index(element) in range(0,len(aList),2):
+                newList.append(element * 2)
+        elif aList.index(element) in range(0,len(aList),3):
+            newList.append(element * 3)
+        else:
+            newList.append(element)
+                
+    
+    return newList
+        
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 
+#['AAAAAA', 'B', 'CC', 'DDD', 'EE', 'F', 'GGGGGG']
+test_list = ["A", "B", "C", "D", "E", "F", "G"]
+print(multiply_strings(test_list))
+
+
+
+SumLists:
+
+#Write a function called sum_lists. sum_lists should take
+#one parameter, which will be a list of lists of integers.
+#sum_lists should return the sum of adding every number from
+#every list.
+#
+#For example:
+#
+# list_of_lists = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+# sum_list(list_of_lists) -> 67
+
+
+#Add your code here!
+def sum_lists(aList):
+    result = 0
+    for microlist in aList:
+        for element in microlist:
+            result += element
+    return result
+            
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 78
+list_of_lists = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+print(sum_lists(list_of_lists))
+
+
+
+Artists:
+
+#We've learned a lot in this chapter. Let's try to use a lot
+#of it for one final exercise.
+#
+#Write a function called sort_artists. sort_artists will
+#take as input a list of tuples. Each tuple will have two
+#items: the first item will be a string holding an artist's
+#name, and the second will be an integer representing their
+#total album sales (in millions).
+#
+#Return a tuple of two lists. The first list in the
+#resulting tuple should be all the artists sorted
+#alphabetically. The second list should be all the revenues
+#sorted in descending numerical order.
+#
+#For example:
+# artists = [("The Beatles", 270.8), ("Elvis Presley", 211.5), ("Michael Jackson", 183.9)]
+# sort_artists(artists) -> (["Elvis Presley", "Michael Jackson", "The Beatles"], [270.8, 211.5, 183.9])
+#
+#Notice that artists is a list of tuples (brackets first,
+#then parentheses), but sort_artists outputs a tuple of
+#lists (parentheses first, then brackets).
+
+
+#Write your function here!
+def sort_artists(listOftuples):
+    result = []
+    allArtists = []
+    revenues = []
+    for element in listOftuples:
+        allArtists.append(element[0])
+        revenues.append(element[1])
+            
+
+    allArtists.sort()
+    revenues.sort()
+    revenues.reverse()
+    return (allArtists, revenues)
+    
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#(['Elvis Presley', 'Michael Jackson', 'The Beatles'], [270.8, 211.5, 183.9])  
+artists = [("The Beatles", 270.8), ("Elvis Presley", 211.5), ("Michael Jackson", 183.9)]
+print(sort_artists(artists))
+
+
+
+LuckySevens:
+
+#Write a function, called lucky_sevens, that takes in one
+#parameter, a list of integers, and returns True if the list
+#has three '7's  in a row and False if the list doesn't.
+#
+#For example:
+#
+#  lucky_sevens([4, 7, 8, 2, 7, 7, 7, 3, 4]) -> True
+#  lucky_sevens([4, 7, 7, 2, 8, 3, 7, 4, 3]) -> False
+#
+#Hint: As soon as you find one instance of three sevens, you
+#could go ahead and return True -- you only have to find it
+#once for it to be True! Then, if you get to the end of the
+#function and haven't returned True yet, then you might
+#want to return False.
+
+
+#Write your function here!
+def lucky_sevens(aList):
+    for i in range(len(aList)):
+        if aList[i] == 7 and aList[i-1] == 7 and aList [i-2] == 7:
+               return True
+    return False
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: True, then False
+print(lucky_sevens([4, 7, 8, 2, 7, 7, 7, 3, 4]))
+print(lucky_sevens([4, 7, 7, 2, 8, 3, 7, 4, 3]))
+
+
+AttendanceCheck:
+
+#Write a function called attendance_check. attendance_check
+#should have two parameters: roster and present. Both roster
+#and present will be lists of strings. Return a list (sorted
+#alphabetically) of all strings in the list roster that are
+#not in the list present. In other words, if roster is a
+#list of students enrolled in a class and present is a list
+#of students in class today, return a list of students that
+#are absent.
+#
+#You may assume that every item in each list will be a
+#string. You may also assume that every name in the list
+#present will be in the list roster. If no students are
+#absent, return an empty list.
+
+
+#Write your function here!
+def attendance_check(roster, present):
+    absent = []
+    for name in roster:
+        if name not in present:
+            absent.append(name)
+            absent.sort()
+    return absent
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 
+#['Ferguson', 'Winston']
+test_roster = ['Jessica', 'Nick', 'Winston', 'Schmidt', 'Cece', 'Ferguson']
+test_present = ['Nick', 'Cece', 'Schmidt', 'Jessica']
+print(attendance_check(test_roster, test_present))
+
+
+
