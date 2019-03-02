@@ -1,0 +1,221 @@
+3.3.4 BasicWhileLoop:
+
+mystery_value = 0
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Write a while loop that continues to add 9 to mystery_value
+#until mystery_value is greater than 100. Each time 9 is
+#added, print the *new* value of mystery_value. For example,
+#with mystery_value = 87, your code should print 96 and 105.
+
+
+#Add your code here!
+while mystery_value <= 100:
+    mystery_value += 9
+    print(mystery_value)
+    
+
+
+
+3.3.5 ThreeWhileLoop:
+
+mystery_int_1 = 3
+mystery_int_2 = 4
+mystery_int_3 = 5
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Above are three values. Run a while loop until all three
+#values are less than or equal to 0. Every time you change
+#the value of the three variables, print out their new values
+#all on the same line, separated by single spaces. For
+#example, if their values were 3, 4, and 5 respectively, your
+#code would print:
+#
+#2 3 4
+#1 2 3
+#0 1 2
+#-1 0 1
+#-2 -1 0
+
+
+#Add your code here!
+while mystery_int_1 >= 0 and mystery_int_2 >= 0 and mystery_int_3 >= 0:
+    
+    mystery_int_1 -= 1
+    mystery_int_2 -= 1
+    mystery_int_3 -= 1
+    
+    print(mystery_int_1, mystery_int_2, mystery_int_3)
+
+
+3.3.5 Earworm:
+
+lyrics = ["I wanna be your endgame", "I wanna be your first string",
+          "I wanna be your A-Team", "I wanna be your endgame, endgame"]
+lines_of_sanity = 6
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Imagine you have a song stuck in your head. Worse, you have
+#only a few lines from a song stuck in your head. They just
+#keep repeating over and over. The specific lines you have
+#stuck in your head are stored in the variable lyrics.
+#
+#You can only stay sane so long while doing this.
+#Specifically, you can only listen to lines_of_sanity lines
+#before going crazy. Once you've reached lines_of_sanity,
+#your brain will finish out the current list, then crumble.
+#
+#Write some code that will print the lyrics that run through
+#your head. It should keep repeating each line one-by-one
+#until you've reached lines_of_sanity lines. Then, it should
+#keep going to finish out the current verse. After that, print
+#"MAKE IT STOP" in all caps (without the quotes).
+#
+#HINT: Remember, we can iterate through items in a list using
+#this syntax:
+#
+#  for item in list_of_items:
+#
+#HINT 2: You'll probably need a counter to count how many lines
+#have been printed so far.
+
+
+#Add your code here! Using the initial inputs from above, this
+#should print 9 lines: all 4 lines of the list twice, followed
+#by MAKE IT STOP
+count = 0
+while count < lines_of_sanity:
+    for item in lyrics:
+        print(item)
+        count += 1
+
+
+print("MAKE IT STOP")
+
+
+
+3.3.3 SumLoop:
+
+mystery_int = -7
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Use a loop to find the sum of all numbers between 0 and
+#mystery_int, including bounds (meaning that if
+#mystery_int = 7, you add 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7).
+#
+#However, there's a twist: mystery_int might be negative.
+#So, if mystery_int was -4, you would -4 + -3 + -2 + -1 + 0.
+#
+#There are a lot of different ways you can do this. Most of
+#them will involve using a conditional to decide whether to
+#add or subtract 1 from mystery_int.
+#
+#You may use either a for loopor a while loop to solve this,
+#although we recommend using a while loop.
+
+
+#Add your code here!
+sum_of_num = 0
+
+if mystery_int > 0:
+    while mystery_int >= 0:
+        sum_of_num += mystery_int
+        mystery_int -= 1
+else:
+    while mystery_int <= 0:
+        sum_of_num += mystery_int
+        mystery_int += 1
+    
+print(sum_of_num)
+
+
+3.3.6 WhileCountdown:
+
+mystery_int = 46
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Use a while loop to create a countdown from mystery_int to
+#0. Count down by 3s: if mystery_int is 46, then you should
+#print 46, 43, 40, etc. Do not print any number lower than 0.
+#Note that you should print both the original value of
+#mystery_int and 0 if you land on it exactly.
+
+
+#Add your code here!
+while mystery_int >= 0:
+    print(mystery_int)
+    mystery_int -= 3
+
+
+3.3.9 Earworm2:
+
+lyrics = ["I wanna be your endgame", "I wanna be your first string",
+          "I wanna be your A-Team", "I wanna be your endgame, endgame"]
+lines_of_sanity = 6
+
+#You may modify the lines of code above, but don't move them!
+#When you Submit your code, we'll change these lines to
+#assign different values to the variables.
+
+#Recall the Earworm problem (3.3.5 Coding Exercise 2). The
+#first time, you would still finish printing the entire list
+#of lyrics after lines_of_sanity was exceeded.
+#
+#Revise that code so that you always stop when lines_of_sanity
+#is reached. If lines_of_sanity is 6, you would print 6 lines,
+#no matter how many lines are in the list. If there are fewer
+#than 6 lines in the list, then you'd repeat the list until
+#the number of lines is reached.
+#
+#For example, with the values above, you'd print:
+#I wanna be your endgame
+#I wanna be your first string
+#I wanna be your A-Team
+#I wanna be your endgame, endgame
+#I wanna be your endgame
+#I wanna be your first string
+#MAKE IT STOP
+#
+#That's 6 lines: the entire list once, then the first two lines
+#again to reach 6. As before, print MAKE IT STOP when you're
+#done.
+#
+#HINT: There are multiple ways to do this: some involve a small
+#change to our earlier answer, others involve a more wholesale
+#rewrite. If you're stuck on one, try to think of a totally
+#different way!
+
+
+#Add your code here! Using the initial inputs from above, this
+#should print 7 lines: all 4 lines of the list, then the first
+#two lines again, then MAKE IT STOP
+
+
+count = 0
+while count < lines_of_sanity:
+    for item in lyrics:
+        print(item)
+        count += 1
+        if count == lines_of_sanity:
+            break
+
+
+print("MAKE IT STOP")
+
+
+
