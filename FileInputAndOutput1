@@ -1,0 +1,349 @@
+WriteFile:
+
+#Write a function called "write_file" that accepts two A
+#parameters: a filename and some data that will either 
+#be an integer or a string to write. The function 
+#should open the file and write the data to the file.
+#
+#Hints:
+#
+# - Don't forget to close the file when you're done!
+# - If the data isn't a string already, you may need
+#   to convert it, depending on the approach you
+#   choose.
+# - Remember, this code has no print statements, so
+#   when you run it, don't expect to see any output
+#   on the right! You could add print statements if
+#   you want a confirmation the code is done running.
+# - You can put the variable for the filename in the
+#   same place where we put text like OutputFile.txt
+#   in the videos.
+
+
+#Write your function here!
+def write_file(filename, data):
+    openfile = open(filename, "w")
+    openfile.write(str(data))
+    openfile.close()
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print nothing. However, if you open WriteFileOutput.txt
+#in the top left after running it, the contents of the
+#file should be 1301.
+write_file("WriteFileOutput.txt", 1301)
+
+
+
+AppendToFile:
+
+#Write a function called "append_to_file" that accepts
+#two parameters: a filename and some data that will
+#be an integer or a string to write. The function 
+#should open the file and add the data to the end of
+#the file. Each new call to append_to_file should add
+#the new contents on a new line.
+#
+#Hints:
+#
+# - Don't forget to close the file when you're done!
+# - If the data isn't a string already, you may need
+#   to convert it.
+# - Remember, this code has no print statements, so
+#   when you run it, don't expect to see any output
+#   on the right! You could add print statements if
+#   you want a confirmation the code is done running.
+# - You can put the variable for the filename in the
+#   same place where we put text like OutputFile.txt
+#   in the videos.
+
+
+#Write your function here!
+def append_to_file(filename, contents):
+    openfile = open(filename, "a")
+    openfile.write(str(contents) + "\n")
+    openfile.close()
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print nothing. However, if you open AppendToFileOutput.txt
+#in the top left after running it, the contents of the
+#file should be another instance of 1301 every time you
+#run this file.
+append_to_file("AppendToFileOutput.txt", 1301)
+
+
+
+FindCoffee:
+
+#Write a function called "find_coffee" that expects a 
+#filename as a parameter. The function should open the 
+#given file and return True if the file contains the word 
+#"coffee". Otherwise, the function should return False.
+#
+#Hint: look up the read() method if you want to do this
+#more simply than you might do with readline().
+
+
+#Write your function here!
+def find_coffee(filename):
+    openfile = open(filename, "r")
+    if "coffee" in openfile.read():
+        return True
+    else:
+        return False
+    openfile.close()
+
+
+#You can test your function with the provided files named 
+#"coffeeful.txt" and "coffeeless.txt". With their original
+#text, the lines below should print True, then False. You
+#may also edit the files by selecting them in the drop
+#down in the top left to try your code with different
+#input.
+print(find_coffee("coffeeful.txt"))
+print(find_coffee("coffeeless.txt"))
+
+
+
+LoadFromFile:
+
+#Write a function called "load_file" that accepts one 
+#parameter: a filename. The function should open the
+#file and return the contents.#
+#
+# - If the contents of the file can be interpreted as
+#   an integer, return the contents as an integer.
+# - Otherwise, if the contents of the file can be
+#   interpreted as a float, return the contents as a
+#   float.
+# - Otherwise, return the contents of the file as a
+#   string.
+#
+#You may assume that the file has only one line.
+#
+#Hints:
+#
+# - Don't forget to close the file when you're done!
+# - Remember, anything you read from a file is
+#   initially interpreted as a string.
+
+
+#Write your function here!
+def load_file(filename):
+    openfile = open(filename, "r")
+    for line in openfile:
+        try:
+            content = int(line)
+        except ValueError:
+            try:
+                content = float(line)
+            except ValueError:
+                content = line
+    openfile.close()
+    
+    return content
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print 123, followed by <class 'int'>.
+contents = load_file("LoadFromFileInput.txt")
+print(contents)
+print(type(contents))
+
+
+
+AngryFileFinder:
+
+#Write a function called "angry_file_finder" that accepts a
+#filename as a parameter. The function should open the file,
+#read it, and return True if the file contains "!" on every
+#line. Otherwise the function should return False. 
+#
+#Hint: there are lots of ways to do this. We'd suggest using
+#either the readline() or readlines() methods. readline()
+#returns the next line in the file; readlines() returns a
+#list of all the lines in the file.
+
+
+#Write your function here!
+def angry_file_finder(filename):
+    openfile = open(filename, "r")
+    for line in openfile:
+        if not "!" in line:
+            openfile.close()
+            return False
+    openfile.close()
+    return True
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: True
+print(angry_file_finder("AngryFileFinderInput.txt"))
+
+
+
+Averaging:
+
+#Write a function called average_file. average_file should
+#have one parameter: a filename.
+#
+#The file should have an integer on each line. average_file
+#should return the average of these integers. However, if
+#any of the lines of the file are _not_ integers,
+#average_file should return the string "Error reading file!"
+#
+#Remember, by default, every time you read a line from a
+#file, it's interpreted as a string.
+
+
+#Add your function here!
+def average_file(filename):
+    openfile = open(filename, "r")
+    result = 0
+    lines_count = 0
+    for line in openfile:
+        try:
+            result += int(line)
+            lines_count += 1
+        except ValueError:
+            return "Error reading file!"
+
+    openfile.close()
+    return result / lines_count        
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 5.0, then Error reading file!
+#
+#You can select valid_file.txt and invalid_file.txt from
+#the dropdown in the top left to preview their contents.
+print(average_file("valid_file.txt"))
+print(average_file("invalid_file.txt"))
+
+
+StandardDeviation:
+
+
+#Write a function called st_dev. st_dev should have one
+#parameter, a filename. The file will contain one integer on
+#each line. The function should return the population standard
+#deviation of those numbers.
+#
+#The formula for population standard deviation can be found here:
+#edge.edx.org/asset-v1:GTx+gt-mooc-staging1+2018_T1+type@asset+block@stdev.PNG
+#
+#The formula is a bit complex, though, and since this is a
+#CS class and not a math class, here are the steps you would
+#take to calculate it manually:
+#
+# 1. Find the mean of the list.
+# 2. For each data point, find the difference between that
+#    point and the mean. Square that difference, and add it
+#    to a running sum of differences.
+# 4. Divide the sum of differences by the length of the
+#    list.
+# 5. Take the square root of the result.
+#
+#You may assume for this problem that the file will contain
+#only integers -- you don't need to worry about invalid
+#files or lines. The easiest way to take the square root is
+#to raise it to the 0.5 power (e.g. 2 ** 0.5 will give the
+#square root of 2).
+#
+#HINT: You might find this easier if you load all of the
+#numbers into a list before trying to calculate the average.
+#Either way, you're going to need to loop over the numbers
+#at least twice: once to calculate the mean, once to
+#calculate the sum of the differences.
+
+
+#Add your function here!
+def st_dev(filename):
+    openfile = open(filename, "r")
+    population = []
+    mean = 0
+    for line in openfile:
+        population.append(int(line))
+        mean += int(line)
+    openfile.close()
+    mean = mean / len(population)
+    sum_of_differences = 0
+    for i in range(len(population)):
+        value = (mean - population[i]) ** 2
+        sum_of_differences += value
+    sum_of_differences /= len(population)
+    result = sum_of_differences ** 0.5
+    return result
+
+
+FlexibleFileWriting:
+
+#Write a function called write_weird_file. write_weird_file
+#should take two positional parameters. The first should be
+#a filename, and the second should be a list. The function
+#should also have three keyword parameters: mode, sort_first
+#and reverse_first. The default value for mode should be "w",
+#and the default values for both sort_first and reverse_first
+#should be False.
+#
+#write_weird_file should write the contents of the list to
+#the given filename. Each item from the list should be on a
+#separate line. The list items could be strings, floats, 
+#characters, or integers. If the mode is "w", it should
+#overwrite the current contents; if the mode is "a", it
+#should append to the current contents. You may assume there
+#will be no other value for mode.
+#
+#If sort_first is True, it should sort the list before
+#writing. If reverse_first is True, then it should reverse
+#the list before writing. If both are True, it should sort,
+#then reverse.
+
+
+#Add your function here!
+def write_weird_file(filename, a_list, mode = "w",
+                     sort_first = False, reverse_first = False):
+    openfile = open(filename, mode)
+    if sort_first:           
+        a_list.sort()
+    if reverse_first:
+        a_list.reverse()
+    for i in a_list:
+        openfile.write(str(i) + "\n")
+       
+            
+    openfile.close()
+    
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+
+write_weird_file("output.txt", ["Hmm, I bet this text will disappear.", "I wonder where it will go?"])
+write_weird_file("output.txt", ["Wait, where'd the other text go?", "It's gone!"])
+write_weird_file("AutomatedTestOutput-sLrOyKUq.txt", ["livestock", "Pugh", "expire", "football", "feign", "hamstrung"], mode="a", sort_first=True, reverse_first=False)
+
+
+
