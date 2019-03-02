@@ -1,0 +1,183 @@
+ReturnDate:
+
+#Write a function called get_todays_date that returns
+#today's date as a string, in the form year/month/day.
+#For example, if today is January 15th, 2017, then it
+#would return 2017/1/15.
+#
+#Remember, you took care of the string formatting part of
+#this exercise in 2.2.9 Coding Exercise 1! Now, you're
+#converting it to a function that returns the string.
+#
+#Note that the line below will let you access today's date
+#using date.today() anywhere in your code.
+from datetime import date
+
+
+#Write your function here!
+def get_todays_date():
+    date_today = date.today()
+    return str(date_today.year) + "/" + str(date_today.month) + "/" + str(date_today.day)
+
+
+#If you want to test your code, you can do so by calling
+#your function below. However, this is no longer required
+#for grading.
+
+print(get_todays_date())
+
+
+SquareArea:
+
+#Write a function that takes in one integer parameter, the
+#side length of a square, and returns the area. The function
+#should be named find_area, and have one parameter:
+#side_length.
+
+
+#Write your function here!
+def find_area(side_length):
+    area = side_length ** 2
+    return area
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "A square with side length 4 has an area of 16".
+
+test_side_length = 4
+print("A square with side length", test_side_length, "has an area of", find_area(test_side_length))
+
+
+Swapped:
+
+#Below we've written a function that is supposed to take in
+#four parameters and produce a string representing the cost
+#of a person's weekly soda consumption. Below the function
+#definition, we're calling the function.
+#
+#However, right now, the code is erroring out. Fix this code
+#without changing the code inside the function. You may
+#change either the function declaration (on line 11) or the
+#function call on line 27.
+
+def soda_habit(sodas_per_week, price_per_soda, calories_per_soda, preferred_soda):
+    
+    #Above, we've moved preferred_soda to the beginning and
+    #sodas_per_week to the end, so our original function
+    #call will work.
+    
+    #Don't change the body of this function!
+    
+    money_spent = price_per_soda * sodas_per_week
+    calories_consumed = calories_per_soda * sodas_per_week
+    
+    summary_string = "You're spending $" + str(money_spent) + " on " + preferred_soda + " per week! "
+    summary_string += " That's " + str(calories_consumed) + " calories!"
+    
+    return summary_string
+
+result = soda_habit(9, 1.75, 140,"Coca-Cola")
+print(result)
+
+
+
+HideAndSeek:
+
+#Write a function called hide_and_seek. The function should
+#have no parameters and return no value; instead, when
+#called, it should just print the numbers from 1 through 10,
+#follow by the text "Ready or not, here I come!". Each
+#number and the message at the end should be on its own
+#line.
+#
+#Then, call the function.
+#
+#There should be no print statements outside the function.
+
+
+#Write your function here!
+def hide_and_seek():
+    for i in range(1, 11):
+        print(i)
+    print("Ready or not, here I come!")
+
+
+#Call your function here!
+hide_and_seek()
+
+
+HideAndSeek2:
+
+#In the previous coding problem, you created a function
+#called hide_and_seek that printed the numbers from 1 to 10.
+#Now, however, we want to extend that. What if we want to
+#count to 20? 30?
+#
+#Modify your previous function so that it takes as input one
+#parameter: count. Then, instead of printing the numbers from
+#1 to 10, it should print the numbers from 1 to the value of
+#count. Then, end with "Ready or not, here I come!"
+
+
+#Write your function here!
+def hide_and_seek(count):
+    for i in range(1, count + 1):
+        print(i)
+    print("Ready or not, here I come!")
+
+
+#The function call below will test your function. We'll delete
+#and overwrite this with other calls to hide_and_seek with
+#different numbers during grading:
+hide_and_seek(36)
+
+
+
+LeapYear:
+
+#A year is considered a leap year if it abides by the
+#following rules:
+#
+#  - Every 4th year IS a leap year, EXCEPT...
+#  - Every 100th year is NOT a leap year, EXCEPT...
+#  - Every 400th year IS a leap year.
+#
+#This starts at year 0. For example:
+#
+#  - 1993 is not a leap year because it is not a multiple of 4.
+#  - 1996 is a leap year because it is a multiple of 4.
+#  - 1900 is not a leap year because it is a multiple of 100,
+#    even though it is a multiple of 4.
+#  - 2000 is a leap year because it is a multiple of 400,
+#    even though it is a multiple of 100.
+#
+#Write a function called is_leap_year. is_leap_year should
+#take one parameter: year, an integer. It should return the
+#boolean True if that year is a leap year, the boolean False
+#if it is not.
+
+
+#Write your function here!
+def is_leap_year(year):
+    if year % 4 == 0 and year % 100 != 0:
+        return True
+    elif year % 100 != 0 and year % 400 == 0:
+        return True
+    elif year % 400 == 0:
+        return True
+    else:
+        return False
+    
+
+print("1993 is a leap year:", is_leap_year(1993))
+print("1996 is a leap year:", is_leap_year(1996))
+print("1900 is a leap year:", is_leap_year(1900))
+print("2000 is a leap year:", is_leap_year(2000))
+
+
+
+
