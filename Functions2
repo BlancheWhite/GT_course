@@ -1,0 +1,385 @@
+Sevens:
+
+#Write a function called lucky_sevens that takes in one
+#parameter, a string variable named a_string. Your function
+#should return True if there are exactly three '7's in
+#a_string. If there are less than three or more than three
+#'7's, the function should return False.
+#
+#For example:
+#  - lucky_sevens("happy777bday") should return True.
+#  - lucky_sevens("h7app7ybd7ay") should also return True.
+#  - lucky_sevens("happy77bday") should return False.
+#  - lucky_sevens("h777appy777bday") should also return False.
+#
+#Hint: Remember in Chapter 3.3, we covered how to use a loop
+#to look at each character in a string.
+
+
+#Write your function here!
+def lucky_sevens(a_string):
+    count = 0
+    for i in a_string:
+        if i == "7":
+            count +=1
+    if count == 3:
+        return True
+    else:
+        return False
+
+print(lucky_sevens("happy777bday"))
+print(lucky_sevens("h7app7ybd7ay"))
+print(lucky_sevens("happy77bday"))
+print(lucky_sevens("h777appy777bday"))
+
+
+IdealGasLaw:
+
+#Last problem, we wrote a function that calculated pressure
+#given number of moles, temperature, and volume. We told you
+#to assume a value of 0.082057 for R. This value means that
+#pressure must be given in atm, or atmospheres, one of the
+#common units of measurement for pressure.
+#
+#atm is the most common unit for pressure, but there are
+#others: mmHg, Torr, Pa, kPa, bar, and mb, for example. what
+#if pressure was sent in using one of these units? Our
+#calculation would be wrong!
+#
+#So, we want to *assume* that pressure is in atm (and thus,
+#that R should be 0.082057), but we want to let the person
+#calling our function change that if need be. So, revise
+#your find_pressure function so that R is a keyword parameter.
+#Its default value should be 0.082057, but the person calling
+#the function can override that. The name of the parameter for
+#the gas constant must be R for this to work.
+#
+#As a reminder, you're writing a function that calculates:
+#
+# P = (nRT) / V
+#
+
+
+#Write your function here! You may copy your work from 3.4.5
+#if you'd like.
+def find_pressure(moles, temperature, volume, R = 0.082057):
+    P = (moles * R * temperature) / volume
+    return P
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "Result: 37168.944".
+test_n = 10
+test_T = 298
+test_V = 5
+test_R = 62.364 #Torr!
+print("Result:", find_pressure(test_n, test_T, test_V, R = test_R))
+
+
+
+PhilJAckson:
+
+#Basketball coach Phil Jackson says that in order for an NBA
+#team to be a contender for a championship, they need to win
+#40 games before they lose 20 games.
+#
+#Write a function called is_a_contender that will take three
+#parameters: a team name (a string), a number of wins (an
+#integer), and a number of losses (an integer).
+#
+#Based on these parameters, the function should return one
+#of three strings:
+#
+# - If the team is a contender (at least 40 wins and fewer
+#   than 20 losses), return "The [team name] are a contender!"
+# - If the team is not a contender (less than 40 wins and at least
+#   20 losses), return "The [team name] are not a contender!"
+# - If it cannot be determined (both values are higher or both
+#   values are lower), return "The [team name] might be a contender!"
+
+
+#Add your code here!
+def is_a_contender(team, wins, losses):
+    if wins >= 40 and losses < 20:
+        return "The {0} are a contender!".format(team)
+    elif wins < 40 and losses >= 20:
+        return "The {0} are not a contender!".format(team)
+    else:
+        return "The {0} might be a contender!".format(team)
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "The Hawks are not a contender!".
+
+test_team_name = "Hawks"
+test_wins = 18
+test_losses = 40
+
+print(is_a_contender(test_team_name, test_wins, test_losses))
+
+
+
+BloodPressure:
+
+#Consult this blood pressures chart: http://bit.ly/2CloACs
+#
+#Write a function called check_blood_pressure that takes two
+#parameters: a systolic blood pressure and a diastolic blood
+#pressure, in that order. Your function should return "Low",
+#"Ideal", "Pre-high", or "High" -- whichever corresponds to
+#the given systolic and diastolic blood pressure.
+#
+#You should assume that if a combined blood pressure is on the
+#line between two categories (e.g. 80 and 60, or 120 and 70),
+#the result should be the higher category (e.g. Ideal and
+#Pre-high for those two combinations).
+#
+#HINT: Don't overcomplicate this! Think carefully about in
+#what order you should check the different categories. This
+#problem could be easy or extremely hard depending on the
+#order you change and whether you use returns or elifs wisely.
+
+
+#Add your code here!
+def check_blood_pressure(systolic, diastolic):
+    if systolic < 90 and diastolic < 60:
+        return "Low"
+    elif systolic <= 120 and diastolic <= 80:
+        return "Ideal"
+    elif systolic <= 140 and diastolic <= 90:
+        return "Pre-high"
+    else:
+        return "High"
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: Ideal
+test_systolic = 110
+test_diastolic = 70
+
+print(check_blood_pressure(test_systolic, test_diastolic))
+
+
+
+PokemonDamage2:
+
+#Recall Coding Problem 2.4.4. In that problem, you calculated
+#the damage done by an attack based on several parameters.
+#
+#Convert your code from there into two functions, one called
+#calculate_damage and one called calculate_modifier.
+#
+#Your function for calculate_damage must call calculate_modifier;
+#it may not calculate the modifier separately. As such,
+#calculate_damage should accept all ten parameters: STAB,
+#Type, Critical, Other, Random, Level, Attack, Defense, and
+#Base. You'll need to pass STAB, Type, Critical, Other, and
+#Random to calculate_modifier.
+#
+#Make sure the parameters to each function follow the order
+#shown above.
+#
+#As a reminder, damage is calculated using this formula:
+#courses.edx.org/asset-v1:GTx+CS1301xII+1T2018+type@asset+block@DamageCalc.png
+#
+#Modifier is calculated using this formula:
+#https://studio.edx.org/asset-v1:GTx+CS1301+1T2017+type@asset+block@ModifierCalc.png
+
+
+#Add your code here!
+def calculate_modifier(STAB, Type, Critical, Other, Random):
+    return STAB * Type * Critical * Other * Random
+def calculate_damage(STAB, Type, Critical, Other, Random, Level, Attack, Defense, Base):
+    modifier = calculate_modifier(STAB, Type, Critical, Other, Random)
+    Damage1 = (((2 * Level + 10) / 250) * (Attack / Defense) * Base + 2)
+    return Damage1 * modifier
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 16.0
+STAB = 1
+Type = 0.25
+Critical = 2
+Other = 1
+Random = 1
+Level = 50
+Attack = 125
+Defense = 110
+Base = 60
+
+print(calculate_damage(STAB, Type, Critical, Other, Random, Level, Attack, Defense, Base))
+
+
+
+AverageWordLength:
+
+#-----------------------------------------------------------
+#In this problem, you should write three functions:
+#word_count, letter_count, and average_word_length.
+#
+#word_count should take as input a string. It should return
+#the number of words in the string. You may assume that the
+#number of words in the string will be one more than the
+#number of spaces in the string.
+#
+#letter_count should take as input a string. It should return
+#the number of letters in the string. You may assume that
+#the string is only letters and spaces: no punctuation or
+#numbers.
+#
+#average_word_length should take as input a string. It should
+#return the average length of the words in the string. You
+#can find the average length by dividing the number of letters
+#by the number of words.
+#
+#Your implementation for average_word_length *must* call
+#word_count and letter_count.
+
+
+#Add your code here!
+def word_count(a_string):
+    count = 1
+    for i in a_string:
+        if i == " ":
+            count += 1
+    return count
+def letter_count(a_string):
+    count = 0
+    for i in a_string:
+        if i != " ":
+            count += 1
+        
+    return count
+
+def average_word_length(a_string):
+    word = word_count(a_string)
+    letters = letter_count(a_string)
+    return letters / word
+     
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 3.5
+a_string = "Up with the white and gold"
+
+print(average_word_length(a_string))
+
+
+ValidCharacters:
+
+#There are a lot of use cases where we want to check to see
+#if a string has any invalid characters in it. For example,
+#when asking for a credit card number, we want to make sure
+#there are no non-numerals (although we might accept dashes
+#or spaces). When asking for a name, we want to make sure
+#all the characters are letters, spaces, or the occasional
+#punctuation mark.
+#
+#Write a function called is_valid. is_valid should take two
+#parameters: a string to check, and a string of all valid
+#characters.
+#
+#is_valid should return the boolean True if all the
+#characters in the string to check are present in the string
+#of valid characters. It should return False if any character
+#in the checked string does not appear.
+
+
+#Add your code here!
+def is_valid(a_string, valid_characters):
+    for i in a_string:
+        print(i)
+        if not i in valid_characters:
+            return False
+
+    return True
+       
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print True, then False
+sample_valid_string = "1234-5678-9011-1111"
+sample_invalid_string = "1234!5678.9011?1111"
+valid_characters = "0123456789-"
+
+print(is_valid(sample_valid_string, valid_characters))
+print(is_valid(sample_invalid_string, valid_characters))
+
+
+VowelsAndConsonants:
+
+#In this problem, your goal is to write a function that can
+#either count all the vowels in a string or all the consonants
+#in a string.
+#
+#Call this function count_letters. It should have two
+#parameters: the string in which to search, and a boolean
+#called find_consonants. If find_consonants is True, then the
+#function should count consonants. If it's False, then it
+#should instead count vowels.
+#
+#Return the number of vowels or consonants in the string
+#depending on the value of find_consonants. Do not count
+#any characters that are neither vowels nor consonants (e.g.
+#punctuation, spaces, numbers).
+#
+#You may assume the string will be all lower-case letters
+#(no capital letters).
+
+
+#Add your code here!
+def count_letters(a_string,find_consonants):
+    vowels = "aeiou"
+    count_v = 0
+    count_c = 0
+    if find_consonants == False:
+        for i in a_string:
+            if i in vowels and i != " ":
+                count_v +=1
+        return count_v
+    else:
+        for i in a_string:
+            if not i in vowels and i != " ":
+                count_c += 1
+        return count_c
+        
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print 14, then 7.
+
+a_string = "up with the white and gold"
+
+print(count_letters(a_string, True))
+print(count_letters(a_string, False))
+
+
+
+
