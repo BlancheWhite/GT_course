@@ -1,0 +1,461 @@
+Scantron
+
+#Write a function called grade_scantron. grade_scantron should
+#take as input two lists: answers and key. Each list contain
+#strings. Each string will be only one letter, a character
+#from A to E. grade_scantron should return how many questions
+#the student got "right", where a student gets a question
+#right if their answer for a problem matches the answer key.
+#
+#In other words, if value of the first item in answers matches
+#the value of the first item in key, the student gets a point.
+#If it does not, the student does not get a point.
+#
+#If the lists do not have the same number of items, return
+#-1 to indicate that the answer key did not belong to the
+#same test as the student's answers.\
+#
+#Hint: in the past, lots of people have tried to do this using
+#the index() method. That won't work! You'll need to track the
+#index yourself.
+
+
+#Write your function here!
+def grade_scantron(answers, key):
+    points = 0
+    for i in range(len(answers)):
+        if len(answers) != len(key):
+            return -1
+        elif answers[i] == key[i]:
+            points += 1
+    return points
+            
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 7
+test_answers = ["A", "B", "B", "A", "D", "A", "B", "A", "E"]
+test_key = ["A", "B", "B", "A", "D", "E", "B", "A", "D"]
+print(grade_scantron(test_answers, test_key))
+
+
+
+RightTriangle:
+
+#Write a function called solve_right_triangle. The function
+#solve_right_triangle should have three parameters: opposite, 
+#adjacent, and use_degrees. opposite and adjacent will be
+#floats, and use_degrees will be a boolean. use_degrees
+#should be a keyword parameter, and it should have a
+#default value of False.
+#
+#The function should return a tuple containing the
+#hypotenuse and angle of the right triangle (in that order).
+#If use_degrees is False, the angle should be in radians.
+#If use_degrees is True, the angle should be in degrees.
+#
+#Remember, the formula for the hypotenuse of a right
+#triangle is the square root of the sum of the squared side
+#lengths. You can find arctan using math.atan(), passing in
+#the quotient of the opposite and adjacent as the argument.
+#By default, math.atan() returns the angle in radians; you
+#can pass that angle as an argument into the math.degrees()
+#method to convert it to degrees; for example:
+#
+# angle_in_degrees = math.degrees(angle_in_radians)
+
+import math
+
+
+#Write your function here!
+def solve_right_triangle(opposite, adjacent, use_degrees = False):
+    hypotenuse = math.sqrt(opposite **2 +  adjacent **2)
+    arctan = math.atan(opposite / adjacent)
+    if use_degrees:
+        arctan = math.degrees(arctan)
+    return (hypotenuse, arctan)
+    
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#(5.0, 0.6435011087932844)
+#(5.0, 36.86989764584402)
+print(solve_right_triangle(3.0, 4.0))
+print(solve_right_triangle(3.0, 4.0, use_degrees = True))
+
+
+
+MovieSales:
+
+#Write a function called solve_right_triangle. The function
+#solve_right_triangle should have three parameters: opposite, 
+#adjacent, and use_degrees. opposite and adjacent will be
+#floats, and use_degrees will be a boolean. use_degrees
+#should be a keyword parameter, and it should have a
+#default value of False.
+#
+#The function should return a tuple containing the
+#hypotenuse and angle of the right triangle (in that order).
+#If use_degrees is False, the angle should be in radians.
+#If use_degrees is True, the angle should be in degrees.
+#
+#Remember, the formula for the hypotenuse of a right
+#triangle is the square root of the sum of the squared side
+#lengths. You can find arctan using math.atan(), passing in
+#the quotient of the opposite and adjacent as the argument.
+#By default, math.atan() returns the angle in radians; you
+#can pass that angle as an argument into the math.degrees()
+#method to convert it to degrees; for example:
+#
+# angle_in_degrees = math.degrees(angle_in_radians)
+
+import math
+
+
+#Write your function here!
+def solve_right_triangle(opposite, adjacent, use_degrees = False):
+    hypotenuse = math.sqrt(opposite **2 +  adjacent **2)
+    arctan = math.atan(opposite / adjacent)
+    if use_degrees:
+        arctan = math.degrees(arctan)
+    return (hypotenuse, arctan)
+    
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#(5.0, 0.6435011087932844)
+#(5.0, 36.86989764584402)
+print(solve_right_triangle(3.0, 4.0))
+print(solve_right_triangle(3.0, 4.0, use_degrees = True))
+
+
+
+WishList:
+
+#Write a function called wish_list. wish_list should have
+#four parameters, in this order: 
+#
+# - a list of strings, representing a list of items on a
+#   wish list
+# - a string, representing a particular item
+# - a float, representing the cost of this item
+# - a float, representing your budget
+#
+#If the item is on the list and you can afford it (cost is
+#less than or equal to budget), return the string,
+#"You should buy a [item name]!", replacing [item name]
+#with the string.
+#
+#If the item is on the list but you can't afford it,
+#return the string, "You should save up for a [item name]!",
+#replacing [item name] with the string.
+#
+#If the item is not on the list, you should return the
+#string "You probably don't want to buy a [item name].",
+#replacing [item name] with the string.
+#
+#HINT: You do not need a loop to solve this. You can use
+#one, but you don't need one.
+
+
+#Add your function here!
+def wish_list(wishes, item, 
+              cost, budget):
+    if item in wishes:
+        if cost <= budget:
+            return "You should buy a %s!" % (item)
+        else:
+            return "You should save up for a %s!" % (item)
+    else:
+        return "You probably don't want to buy a %s." % (item)
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "You should save up for a bugle!"
+
+wish_list_items = ["bugle", "trumpet", "banjo", "tuba"]
+selected_item = "bugle"
+item_cost = 199.99
+budget = 150.00
+
+print(wish_list(wish_list_items, selected_item, item_cost, budget))
+
+
+
+FitBit:
+
+#Imagine you're writing some code for an exercise tracker.
+#The tracker measures heart rate, and should display the
+#average heart rate from an exercise session.
+#
+#However, the tracker doesn't automatically know when the
+#exercise session began. It assumes the session starts the
+#first time it sees a heart rate of 100 or more, and ends
+#the first time it sees one under 100.
+#
+#Write a function called average_heart_rate.
+#average_heart_rate should have one parameter, a list of
+#integers. These integers represent heart rate measurements
+#taken 30 seconds apart. average_heart_rate should return
+#the average of all heart rates between the first 100+
+#heart rate and the last one. Return this as an integer
+#(use floor division when calculating the average).
+#
+#You may assume that the list will only cross the 100 beats
+#per minute threshold once: once it goes above 100 and below
+#again, it will not go back above.
+
+
+#Add your function here!
+def average_heart_rate(heart_rate):
+    beats = 0
+    count = 0
+    for i in heart_rate:
+        if i >= 100:
+            beats += i
+            count += 1
+    return beats // count
+            
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print 114 (because there are 14 measurements from 102 to
+#101, their sum is 1609, and 1609 // 14 is 114).
+beats = [72, 77, 79, 95, 102, 105, 112, 115, 120, 121, 121,
+         125, 125, 123, 119, 115, 105, 101, 96, 92, 90, 85]
+print(average_heart_rate(beats))
+
+
+
+StringSplit:
+
+#Write a function called string_splitter that replicates the
+#function of the string type's split() method, assuming that
+#we're splitting at spaces. string_splitter should take as
+#input a string, and return as output a list of the
+#individual words from the string, assuming that words were
+#divided by spaces. The spaces themselves should not be in
+#the list that your function returns.
+#
+#You may assume that there will never be more than one space
+#in a row, and that the string will neither start nor end
+#with a space. However, you should not assume there will
+#always be a space.
+#
+#You may not use Python's built-in split() method.
+#
+#For example:
+#
+#  string_splitter("Hello world") -> ['Hello', 'world']
+
+
+#Write your function here!
+def string_splitter(a_string):
+    words = []
+    current_word = ""
+    for i in a_string:
+        if i == " ":
+            words.append(current_word)
+            current_word = ""
+        else:
+            current_word += i
+    words.append(current_word)
+    return words
+    
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: ['Hello', 'world']
+print(string_splitter("I was wondering if after all these years you'd like to meet"))
+
+
+Sample_answer:
+
+#There are a lot of different ways you could do this
+#problem. The one below is probably one of the simplest,
+#but there are lots of others.
+#
+#For this answer, we're going to basically follow this
+#pattern:
+#
+#If there's currently a space in the string, then there
+#are at least two words. So, grab the first word by
+#finding the index of the first space, save the first
+#word to the list, and remove the first word from the
+#string. Repeat as long as there are spaces in the
+#string. When all the spaces are gone, add whatever is
+#left to the list.
+
+def string_splitter(a_string):
+    
+    #First we initialize the list we'll end up returning:
+    
+    words = []
+    
+    #Then, we run a while loop as long as there is a
+    #space in the string. If there's a space, there must
+    #be at least two words:
+    
+    while " " in a_string:
+        
+        #So, if we're here, we know there's a space in
+        #the string. So, the first word is the string
+        #slice from the beginning until the index of the
+        #first space.
+        #
+        #So, we find the index...
+        
+        index = a_string.find(" ")
+        
+        #...and add that slice to the list of words...
+        
+        words.append(a_string[:index])
+        
+        #...and remove that slice from a_string. To do
+        #this last part, we set a_string equal to
+        #itself, starting one character after the first
+        #space.
+        
+        a_string = a_string[index + 1:]
+        
+        #If there are still spaces, the loop will repeat.
+        #Each time the loop repeats, it'll get rid of
+        #one space.
+        
+    #When there are no more spaces, then there is still
+    #one word in the string: whatever was after the last
+    #space. So, we add that to the list:
+    
+    words.append(a_string)
+    
+    #And return our result:
+    
+    return words
+
+
+print(string_splitter("Hello, world"))
+
+
+
+OneDAneOr:
+
+#Write a function called one_dimensional_booleans.
+#one_dimensional_booleans should have two parameters:
+#a list of booleans called bool_list and a boolean called
+#use_and. You may assume that bool_list will be a list
+#where every value is a boolean (True or False).
+#
+#The function should perform as follows:
+#
+# - If use_and is True, the function should return True if
+#   every item in the list is True (simulating the and
+#   operator).
+# - If use_and is False, the function should return True if
+#   any item in the list is True (simulating the or
+#   operator).
+
+
+#Write your function here!
+def one_dimensional_booleans(bool_list, use_and):
+    if use_and == True:
+        for i in bool_list:
+            if i == True:
+                result = True 
+            else:
+                result = False
+                break
+        return result
+    else:
+        for i in bool_list:
+            if i == False:
+                result = False 
+            else:
+                result = True
+                break
+        return result
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: True, False, True, False.
+print(one_dimensional_booleans([True, True, True], True))
+print(one_dimensional_booleans([True, False, True], True))
+print(one_dimensional_booleans([True, False, True], False))
+print(one_dimensional_booleans([False, False, False], False))
+
+
+Sample_answer:
+
+def one_dimensional_booleans(bool_list, use_and):
+    
+    #There are a lot of different ways you could do this.
+    #You could, for example, loop over each item in the
+    #list and update a running result based on the new
+    #value.
+    #
+    #Let's try it a simpler way, though. If use_and was
+    #False, then our logic is pretty simple: we just
+    #return whether 'True' is anywhere in the list:
+    
+    if not use_and:
+        return True in bool_list
+    
+    #If use_and was True, our logic is just a little bit
+    #more complicated. First, we want to find our whether
+    #False is in the list. If it is, then we want to
+    #return False; if it's not (meaning all the values
+    #are True), then we want to return True. So, we want
+    #to return the *opposite* of False in bool_list. We
+    #can do that with the not operator:
+    
+    else:
+        return not False in bool_list
+    
+    #Note that we could actually compress these four lines
+    #down into only one, but it makes the logic a little
+    #harder to follow:
+    #
+    #return (use_and and True in bool_list) or (not use_and and not False in bool_list)
+
+
+
+print(one_dimensional_booleans([True, True, True], True))
+print(one_dimensional_booleans([True, False, True], True))
+print(one_dimensional_booleans([True, False, True], False))
+print(one_dimensional_booleans([False, False, False], False))
+
+
+
+
+
+
+
+
+
