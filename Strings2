@@ -1,0 +1,689 @@
+Ordinal:
+
+#Python, like most languages, actually uses numbers in the 
+#background to represent individual characters in a string. 
+#For example, "a" is assigned the numeric value of 97. 
+#We call this the ordinal value. www.asciitable.com shows
+#a table of ordinal values: the ordinal value is listed in
+#the 'dec' column, and the actual character is listed in
+#'chr' column.
+#
+#You'll notice, though, that many of the characters here
+#are weird. The first 31 are cryptic characters that have
+#special meaning to the computer. The extended codes haven't
+#really been used since Windows came along. Beyond these
+#255, the higher numbers are actually used to represent
+#emojis.
+#
+#Now, think about when you're asked to create a password.
+#Typically, there are restrictions on what characters you
+#can use. How do you check if a password is valid? You
+#could have a list of valid characters and check each
+#character against that list, but that would be a really
+#long list. Instead, let's use ordinal values.
+#
+#Write a function called "valid_char" that determines
+#if a single character (a string of length one) has an
+#ordinal value corresponding to a valid character for a
+#password. Valid characters are any character on the
+#keyboard except spaces. Return True if it's a valid
+#character, False if it is not.
+#
+#Hint: you can find the ordinal value of a character using 
+#the built-in Python function ord(): ord("a") -> 97
+#
+#Hint 2: the range of legal characters will be one
+#continuous range (e.g. characters 55 through 65, not
+#separate ranges like 55 through 65 and 69 through 79).
+#You can use asciitable.com to look up what range you
+#should use.
+
+
+#Write your function here!
+def valid_char(a_string):
+    for i in a_string:
+        if ord(i) >= 33 and ord(i) <= 126:
+            return True
+    return False
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: True, False, True, False
+
+print(valid_char("a"))
+print(valid_char(" "))
+print(valid_char("!"))
+print(valid_char("☺"))
+
+
+
+ThirdChar:
+
+#Write function called third_character that accepts a
+#string as an argument and returns the third character
+#of the string. If the user inputs a string with fewer than
+#3 characters, return "Too short". 
+
+
+#Write your function here!
+def third_character(a_string):
+    if len(a_string) < 3:
+        return "Too short"
+    return a_string[2]
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 1, o, and "Too short", each on a different line.
+print(third_character("CS1301"))
+print(third_character("Georgia Tech"))
+print(third_character("GT"))
+
+
+
+NumChange:
+
+#Write a function called "num_changer" that accepts a string 
+#of digits (0-9). You should make an integer from the digits 
+#of the even indices and another number from the digits in 
+#the odd indices. Return the sum of these two numbers. You 
+#can assume the given string will have a length of at least 
+#2 digits.
+#
+#For example, if the string was "123456", you would split
+#this into two integers, 135 and 246. Adding them would give
+#381. Or if the string was "13579", you would split this into
+#159 and 37, then add them to get 196.
+#
+#Hint: You can do this with loops, but it's easier to do
+#this with string slicing. Remember how we could pass a third
+#argument to range() that would tell range how many numbers
+#to skip? You can do something similar with string slices: if
+#you include second colon in a string slice, the number
+#that follows it lets you skip characters in the string. For
+#example:
+#
+# "Hello, world!"[1:9] -> This gives "ello, wo".
+# "Hello, world!"[1:9:2] -> This gives "el,w". Including :2
+#    in the string slice skips every other letter. 
+# "Hello, world!" [::3] -> This gives "Hl r!". Leaving the
+#    first two spots blank tells it to look at the entire
+#    string, but putting :3 at the end says to only take
+#    every third character (H, l, space, r, and !).
+#
+#Hint 2: Remember, Python is zero-indexed. That means the
+#first number in the string is at position 0, and so it goes
+#in the even list.
+
+
+#Write your function here!
+def num_changer(StringOfDigits):
+    TheEvens = int(StringOfDigits[::2])
+    TheOdds = int(StringOfDigits[1::2])
+    return TheEvens + TheOdds
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 123456 -> 381
+string_int = "123456"
+result = num_changer(string_int)
+print(string_int + " -> " + str(result))
+
+
+
+InParentheses:
+
+#Write a function called "in_parentheses" that accepts a 
+#single argument, a string representing a sentence that
+#contains some words in parentheses. Your function should
+#return the contents of the parentheses.
+#
+#For example:
+#
+# in_parentheses("This is a sentence (words!)") -> "words!"
+#
+#If no text appears in parentheses, return an empty string.
+#Note that there are several edge cases introduced by this:
+#all of the following function calls would return an empty
+#string:
+#
+# in_parentheses("No parentheses")
+# in_parentheses("Open ( only")
+# in_parentheses("Closed ) only")
+# in_parentheses("Closed ) before ( open")
+#
+#You may assume, however, that there will not be multiple
+#open or closed parentheses.
+
+
+#Write your function here!
+def in_parentheses(a_string):
+    openParentheses = a_string.find("(")
+    closeParentheses = a_string.find(")")
+    if openParentheses < closeParentheses and openParentheses != -1 and closeParentheses != -1:
+        return a_string[openParentheses + 1: closeParentheses]
+    return ""    
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print (including the blank lines):
+#words!
+#
+#as he is doing right now
+#
+#
+#!
+
+print(in_parentheses("This is a sentence (words!)."))
+print(in_parentheses("No parentheses here!"))
+print(in_parentheses("David tends to use parentheses a lot (as he is doing right now). It tends to be quite annoying."))
+print(in_parentheses("Open ( only"))
+print(in_parentheses("Closed ) only"))
+print(in_parentheses("Closed ) before ( open"))
+print(in_parentheses("That's a lot of test cases(!)"))
+
+
+
+StrType:
+
+#Write a function called 'string_type' which accepts one
+#string argument and determines what type of string it is. 
+#
+# - If the string is empty, return "empty".
+# - If the string is a single character, return "character".
+# - If the string represents a single word, return "word".
+#   The string is a single word if it has no spaces.
+# - If the string is a whole sentence, return "sentence".
+#   The string is a sentence if it contains spaces, but
+#   at most one period.
+# - If the string is a paragraph, return "paragraph". The
+#   string is a paragraph if it contains both spaces and
+#   multiple periods (we won't worry about other
+#   punctuation marks).
+# - If the string is multiple paragraphs, return "page".
+#   The string is a paragraph if it contains any newline
+#   characters ("\n").
+#
+#Hint: think carefully about what order you should check
+#these conditions in.
+#
+#Hint 2: remember, there exists a count() method that
+#counts the number of times a string appears in another
+#string. For example, "blah blah blah".count("blah")
+#would return 3.
+
+
+#Write your function here!
+def string_type(a_string):
+    if len(a_string) == 0:
+        return "empty"
+    elif "\n" in a_string:
+        return "page"
+    elif len(a_string) == 1:
+        return "character"
+    elif not " " in a_string:
+        return "word"
+    elif a_string.count(" ") > 1 and a_string.count(".") == 1 or a_string.count("!") == 1:
+        return "sentence"
+    elif a_string.count(" ") > 1 and a_string.count(".") > 1:
+        return "paragraph"
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#empty
+#character
+#word
+#sentence
+#paragraph
+#page
+print(string_type(""))
+print(string_type("!"))
+print(string_type("CS1301."))
+print(string_type("This is too many cases!"))
+print(string_type("There's way too many ostriches. Why are there so many ostriches. The brochure said there'd only be a few ostriches."))
+print(string_type("Paragraphs need to have multiple sentences. It's true.\nHowever, two is enough. Yes, two sentences can make a paragraph."))
+
+
+
+
+InputType:
+
+#Recall that input from a user is always in the form of a string. 
+#Write a function called "input_type" that gets user input and 
+#determines what kind of string the user entered. The user input
+#will be supplied as an argument to the function like normal.
+#
+#  - Your function should return "integer" if the string only
+#    contains characters 0-9.
+#  - Your function should return "float" if the string only
+#    contains the numbers 0-9 and at most one period.
+#  - You should return "boolean" if the user enters "True" or
+#    "False". 
+#  - Otherwise, you should return "string".
+
+
+#Write your function here!
+def input_type(user_input):
+    if "True" in user_input or "False" in user_input:
+        return "boolean"
+    elif user_input.isdigit() == True:
+        return "integer"
+    elif "0123456789" and "." in user_input:
+        return "float"
+    return "string"
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print:
+#string
+#boolean
+#float
+#integer
+print(input_type(""))
+print(input_type("False"))
+print(input_type("7.432621"))
+print(input_type("2788"))
+
+
+
+QuoteThis:
+
+#Write a function called "quote_this" that accepts two 
+#strings as arguments: a string representing a quote and
+#a string of a name. The function should return a new
+#string with the quote surrounded by quotation marks (")
+#followed by a dash and the given name. For example:
+#
+#a = quote_this("Try and fail, but never fail to try.",
+#"Jared Leto")
+#print(a) 
+#
+#Will print:
+#"Try and fail, but never fail to try." -Jared Leto
+#
+#If the code were to continue, this:
+#
+#b = quote_this(a, "Michael Scott")
+#print(b)
+#
+#Would print:
+#""Try and fail, but never fail to try." -Jared Leto"
+#- Michael Scott
+
+
+#Write your function here!
+def quote_this(quote, name):
+    return "\"" + quote + "\"" + " -" + name
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print the same output as the examples above.
+a = quote_this("Try and fail, but never fail to try.", "Jared Leto")
+print(a) 
+b = quote_this(a, "Michael Scott")
+print(b)
+
+
+
+StringFinder:
+
+#Write a function called string_finder. string_finder should
+#take two parameters: a target string and a search string.
+#The function will look for the search string within the
+#target string.
+#
+#The function should return a string representing where in
+#the target string the search string was found:
+#
+# - If search string is at the very beginning of target
+#   string, then return "Beginning". For example:
+#   string_finder("Georgia Tech", "Georgia") -> "Beginning"
+#
+# - If search string is at the very end of target string,
+#   then return "End". For example:
+#   string_finder("Georgia Tech", "Tech") -> "End"
+#
+# - If search string is in target string but not at the
+#   very beginning or very end, then return "Middle. For
+#   example:
+#   string_finder("Georgia Tech", "gia") -> "Middle"
+#
+# - If search string is not in target string at all, then
+#   return "Not found". For example:
+#   string_finder("Georgia Tech", "Idaho") -> "Not found"
+#
+#Assume that we're only interested in the first instance
+#of the search string if it appears multiple times in the
+#target string, and that search string is definitely
+#shorter than target string.
+#
+#Hint: Don't be surprised if you find that the "End" case
+#is the toughest! You'll need to look at the lengths of
+#both the target string and the search string.
+
+#Write your function here!
+def string_finder(target, search):
+    lenghtTarget = len(target)
+    lenghtSearch = len(search)
+    position = target.find(search)
+    oneMinusAnother = lenghtTarget - lenghtSearch
+    if position < 0:
+        return "Not found"
+    elif position == 0:
+        return "Beginning"
+    elif position == oneMinusAnother:
+        return "End"
+    else:
+        return "Middle"
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: Start, Middle, End, Not found, each on their own
+#line.
+print(string_finder("Georgia Tech", "Georgia"))
+print(string_finder("Georgia Tech", "gia"))
+print(string_finder("Georgia Tech", "Tech"))
+print(string_finder("CS1301", "1301"))
+
+
+
+FindColor:
+
+#This one is a challenge. There's a lot going on: splitting
+#up strings, removing unnecessary characters, converting to
+#integers, and running a big conditional. Our solution to
+#this is 34 lines -- you can do it!
+#
+#In web development, it is common to represent a color like 
+#this:
+#
+#  rgb(red_val, green_val, blue_val)
+#
+#where red_val, green_val and blue_val would be substituted 
+#with values from 0-255 telling the computer how much to 
+#light up that portion of the pixel. For example:
+#
+# - rgb(255, 0, 0) would make a color red. 
+# - rgb(255, 255, 0) would make yellow, because it is equal 
+#   parts red and green. 
+# - rgb(0, 0, 0) would make black, the absence of all color.
+# - rgb(255, 255, 255) would make white, the presence of all
+#   colors equally.
+#
+#Don't let the function-like syntax here confuse you: here,
+#these are just strings. The string "rgb(0, 255, 0)"
+#represents the color green.
+#
+#Write a function called "find_color" that accepts a single 
+#argument expected to be a string as just described. Your
+#function should return a simplified version of the color
+#that is represented according to the following rules:
+#
+# If there is more red than any other color, return "red".
+# If there is more green than any other color, return "green".
+# If there is more blue than any other color, return "blue".
+# If there are equal parts red and green, return "yellow".
+# If there are equal parts red and blue, return "purple".
+# If there are equal parts green and blue, return "teal".
+# If there are equal parts red, green, and blue, return "gray".
+# (even though this might be white or black).
+
+
+#Write your function here!
+def find_color(color):
+    color = color.split(", ")
+    color[0] = color[0].replace("rgb(", "")
+    color[2] = color[2].replace(")", "")
+    red = int(color[0])
+    green = int(color[1])
+    blue = int(color[2])
+    if red > green and red > blue:
+        return "red"
+    elif green > red and green > blue:
+        return "green"
+    elif blue > red and blue > green:
+        return "blue"
+    elif red == green and red == blue:
+        return "gray"
+    elif red == green:
+        return "yellow"
+    elif red == blue:
+        return "purple"
+    elif green == blue:
+        return "teal"
+
+
+                     
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: red, purple, gray, each on their own line.
+print(find_color("rgb(125, 50, 75)"))
+print(find_color("rgb(125, 17, 125)"))
+print(find_color("rgb(217, 217, 217)"))
+
+
+Steps:
+
+#Now, let's improve our steps() function to take one parameter
+#that represents the number of 'steps' to print. It should
+#then return a string that, when printed, shows output like
+#the following:
+#
+#print(steps(3))
+#111
+#	222
+#		333
+#
+#print(steps(6))
+#111
+#	222
+#		333
+#			444
+#				555
+#					666
+#
+#Specifically, it should start with 1, and show three of each
+#number from 1 to the inputted value, each on a separate
+#line. The first line should have no tabs in front, but each
+#subsequent line should have one more tab than the line
+#before it. You may assume that we will not call steps() with
+#a value greater than 9.
+#
+#Hint: You'll want to use a loop, and you'll want to create
+#the string you're building before the loop starts, then add
+#to it with every iteration.
+
+
+#Write your function here!
+def steps(num_steps):
+    a = ""
+    for i in range(num_steps):
+        a += "\t" * i + str(i + 1)* 3 + "\n"
+    return a
+
+
+#The following two lines will test your code, but are not
+#required for grading, so feel free to modify them.
+print(steps(3))
+print(steps(6))
+
+
+
+AfterSecond:
+
+#Write a function called after_second that accepts two 
+#arguments: a target string to search, and string to search
+#for. The  function should return everything in the first
+#string *after* the *second* occurrence of the search term.
+#You can assume  there will always be at least two
+#occurrences of the search term in the first string. 
+#
+#For example:
+#  after_second("11223344554321", "3") -> 44554321
+#
+#The search term "3" appears at indices 4 and 5. So, this
+#returns everything from the index 6 to the end.
+#
+#  after_second("heyyoheyhi!", "hey") -> hi!
+#
+#The search term "hey" appears at indices 0 and 5. The
+#search term itself is three characters. So, this returns
+#everything from the index 8 to the end.
+#
+#Hint: This may be more complicated than it looks! You'll
+#have to look at the length of the search string and
+#either modify the target string or take advantage of the
+#extra arguments you can pass to find().
+
+
+#Write your function here!
+def after_second(target, search):
+    position = target.find(search)
+    add = len(search)
+    secondOccurence = target.find(search, position + 1)
+    result = target[secondOccurence + add:]
+    return result
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print 44554321 and hi!, each on their own line.
+print(after_second("11223344554321", "3"))
+print(after_second("heyyoheyhi!", "hey"))
+
+
+
+ReplaceAll:
+
+#Write a function called "replace_all" that accepts three 
+#arguments:
+#
+# - target_string, a string in which to search.
+# - find_string, a string to search for.
+# - replace_string, a string to use to replace every instance
+#   of the value of find.
+#
+#The arguments will be provided in this order. Your function
+#should mimic the behavior of "replace", but you cannot use
+#that function in your implementation. Instead, you should
+#find the result using a combination of split() and join(),
+#or some other method.
+#
+#Hint: This exercise can be complicated, but it can also
+#be done in a single short line of code! Think carefully about
+#the methods we've covered.
+
+
+#Write your function here!
+def replace_all(target_string, find_string, replace_string):
+    target_string = target_string.split(find_string)
+    return replace_string.join(target_string)
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "In case I don't see ya, bad afternoon, bad evening,
+#and bad night!"
+target = "In case I don't see ya, good afternoon, good evening, and good night!"
+find = "good"
+replace = "bad"
+print(replace_all(target, find, replace))
+
+
+
+
+SpongeBob:
+
+#Write a function called mock. mock should take one
+#parameter, a string. You may assume that the string will
+#have only lowercase letters and spaces.
+#
+#Your function should return the same string, but any letter
+#at an even index should be converted to uppercase.
+#
+#For example: mock("abcd efgh ijkl") would return
+#"AbCd eFgH IjKl".
+#
+#Remember, you can use the ordinal function ord() to get the
+#number associated with a single letter. For example,
+#ord("a") returns 97. The number associated with lowercase
+#letters is always 32 larger than the number associated with
+#the equivalent uppercase letter. ord("a") is 97, and
+#ord("A") is 65. ord("z") is 122, and ord("Z") is 90.
+#
+#Remember, you can use the character function chr() to
+#convert a number back to a letter. For example, chr(65) will
+#return "A".
+#
+#HINT: Treat all characters the same initially, then worry
+#about taking care of spaces afterwards.
+
+
+#Write your function here!
+def mock(a_string):
+    new_string = ""
+    e = True
+    for i in a_string:
+        if e:
+            new_string += i.upper()
+        else:
+            new_string += i.lower()
+        e = not e
+    return new_string
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: "A square with side length 4 has an area of 16".
+
+print(mock("abcd efgh ijkl"))
+
+
+
+
+
