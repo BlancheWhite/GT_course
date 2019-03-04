@@ -1,0 +1,299 @@
+#This is a long one -- our answer is 20 lines of code, but
+#yours will probably be longer. That's because it's one of the
+#more authentic problems we've done so far. This is a real
+#problem you'll start to face if you want to start creating
+#useful programs.
+#
+#One of the reasons that filetypes work is that everyone 
+#agrees how they are structured. A ".png" file, for example, 
+#always contains "PNG" in the first four characters to 
+#assure the program that the file is actually a png. If these
+#standards were not set, it would be hard to write programs 
+#that know how to open and read the file. 
+#
+#Let’s define a new filetype called ".cs1301". 
+#In this file, every line should be structured like so:
+#
+#number assignment_name grade total weight
+#
+#In this file, each component will meet the following
+#description:
+#
+# - number: an integer-like value of the assignment number 
+#
+# - assignment_name: a string value of the assignment name
+#
+# - grade: an integer-like value of a student’s grade
+#
+# - total: an integer-like value of the total possible
+#   number of points
+#
+# - weight: a float-like value ranging from 0 to 1 
+#   representing the percent of the student’s grade this 
+#   assignment is worth. All the weights should add up to 1.
+#
+#Each component should be separated with exactly one space. 
+#A good sample file is available to view as 
+#"sample.cs1301".
+#
+#Write a function called format_checker that accepts a 
+#filename and returns True if the file contents accurately 
+#conform to the described format. Otherwise the function 
+#should return False. In other words, it should return True
+#if:
+#
+# - Each line has five elements separated by spaces, AND
+# - The first, third, and fourth elements are integers, AND
+# - The fifth element is a decimal number, AND
+# - All the fifth elements add to 1.
+#
+#You can make changes to test.cs1301 to test your function,
+#or test it with sample.cs1301. Right now, running it on
+#sample.cs1301 should return True, and on test.cs1301
+#should return False.
+#
+#Hint 1: .split() will likely help separate each line into 
+#its components.
+#Hint 2: .split() returns a list. So, if you were to do
+#something like say split_line = line.split(), then
+#split_line[0] would give the first item, split_line[1] would
+#give the second item, etc.
+#Hint 3: If you're having trouble, try breaking it down by
+#parts. First check the file to see if it has the right
+#number of items per line, then whether the items are of
+#the correct type, then whether the fifth elements add to
+#1. Remember, you know how to do each individual check
+#(checking types, adding numbers, finding list lengths) --
+#the hard part is knitting this all together into one bigger
+#solution.
+
+
+#Write your function here!
+def format_checker(filename):
+    with open(filename, "r") as file:
+        data = file.readlines()
+        lines = []
+        # the variable "weight" is has been created to verify the             # last condition
+        weight = 0
+        for line in data:
+            line = line.rstrip()
+            lines.append(line.split())
+        for element in lines:
+            if len(element) == 5:
+                try:
+                    element[0] = int(element[0])
+                    element[2] = int(element[2])
+                    element[3] = int(element[3])
+                    element[4] = float(element[4])
+                except ValueError:
+                    return False
+                except Exceptions as error:
+                    return False
+              
+                weight += element[4]
+            else:
+                return False
+        if weight != 1:
+            return False
+        file.close()
+        return True
+          
+#Test your function below. With the original values of these
+#files, these should print True, then False:
+print(format_checker("sample_1.cs1301"))
+print(format_checker("sample_2.cs1301"))
+
+
+Reader:
+
+#Write a function called "reader" that reads in a ".cs1301" 
+#file described in the previous problem. The function should 
+#return a list of tuples representing the lines in the file like so:
+#
+#[(line_1_number, line_1_assignment_name, line_1_grade, line_1_total, line_1_weight), 
+#(line_2_number, line_2_assignment_name, line_2_grade, line_2_total, line_2_weight)]
+#
+#All items should be of type int except for the name (string) 
+#and the weight (float). You can assume the file will be in the 
+#proper format -- in a real program, you would use your code
+#from the previous problem to check for formatting before
+#trying to call the function below.
+#
+#Hint: Although you could use readlines() to read in all
+#the lines at once, they would all be strings, not a list.
+#You still need to go line-by-line and convert each string
+#to a list.
+
+
+#Write your function here!
+def reader(filename):
+    with open(filename, "r") as file:
+        theList = []    
+        data = file.readlines()
+        for element in data:
+            element = element.strip()
+            number, assignmentName, grade, totalPoints, weight = element.split()
+            number = int(number)
+            grade = int(grade)
+            totalPoints = int(totalPoints)
+            weight = float(weight)
+            theTuple = (number, assignmentName, grade, totalPoints, weight)
+            theList.append(theTuple)
+        file.close()
+        return theList
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 
+#[(1, 'assignment_1', 85, 100, 0.25), (2, 'test_1', 90, 100, 0.25), (3, 'exam_1', 95, 100, 0.5)]
+print(reader("sample.cs1301"))
+
+
+
+Write1301:
+
+#Write a function called write_1301 which will write a file
+#in the format described in Coding Problem 4.4.2. The
+#sample.cs1301 file has been included to refresh your 
+#memory. Your function should accept two arguments:
+#A string of a filename to write to, and a list of tuples. 
+#You can assume that each tuple will have the following 
+#format:
+#
+#(int, str, int, int, float)
+#
+#Each tuple will represent a line in the file, and each
+#item in the tuple should correspond to the 
+#assignment number, the assignment name, the student's 
+#grade, the total possible number of points, and the 
+#assignment weight respectively. 
+
+
+#Write your function here!
+def write_1301(filename, tupleList):
+    with open(filename, "w") as file:
+        for element in tupleList:
+            number, assignmentName, grade, totalPoints, weight = element
+            print(number, assignmentName, grade, totalPoints, weight, file = file)
+    file.close()
+    
+
+#The code below will test your function. It's not used
+#for grading, so feel free to modify it! You may check
+#output.cs1301 to see how it worked.
+tuple1 = (1, "exam_1", 90, 100, 0.6)
+tuple2 = (2, "exam_2", 95, 100, 0.4)
+tupleList = [tuple1, tuple2]
+write_1301("output.cs1301", tupleList)
+
+
+
+GetGrade:
+
+#Write a function called get_grade that will read a
+#given .cs1301 file and return the student's grade.
+#To do this, we would recommend you first pass the
+#filename to your previously-written reader() function,
+#then use the list that it returns to do your
+#calculations. You may assume the file is well-formed.
+#
+#A student's grade should be 100 times the sum of each
+#individual assignment's grade divided by its total,
+#multiplied by its weight. So, if the .cs1301 just had
+#these two lines:
+#
+# 1 exam_1 80 100 0.6
+# 2 exam_2 30 50 0.4
+#
+#Then the result would be 72:
+#
+# (80 / 100) * 0.6 + (30 / 50) * 0.4 = 0.72 * 100 = 72
+
+
+#Write your function here!
+def get_grade(filename):
+    with open(filename, "r") as file:
+        data = file.readlines()
+        result = 0
+        for element in data:
+            element = element.strip()
+            theList = element.split()
+            result += (int(theList[2]) / int(theList[3])) * float(theList[4])
+        file.close()
+        return result * 100
+
+
+#Below are some lines of code that will test your function.
+#You can change the value of the variable(s) to test your
+#function with different inputs.
+#
+#If your function works correctly, this will originally
+#print: 91.55 
+print(get_grade("sample.cs1301"))
+
+
+
+SortFilms:
+
+#We've given you a file called "top500.txt" which contains
+#the name and lifetime gross revenue of the top 500
+#films at the time this question was written. 
+#
+#Each line of the given file is formatted like so:
+# <name>\t<gross revenue in dollars>
+#
+#In other words, you should call .split("\t") to split
+#the line into the movie name (the first item) and the
+#gross (the second item).
+#
+#Unfortunately, these movies are not in order. Write a 
+#function called "sort_films" that accepts two parameters:
+#a string of a source filename and a string of a
+#destination filename. Your function should open the
+#source file and sort the contents from greatest gross
+#revenue to least gross revenue, and write the sorted
+#contents to the destination filename. You may assume the
+#source file is correctly formatted.
+#
+#Hint: one common issue on this problem is that every line
+#in the input file ends with a line break except the last
+#one. If the autograder gives you an index error, open
+#top500result.txt and make sure there are 500 lines in your
+#output file!
+
+
+#Write your function here!
+def takeSecond(elem):
+    return elem[1]
+def sort_films(filename, destination):
+    with open(filename, "r") as file:
+        data = file.readlines()
+        newList = []
+        for element in data:
+            element = element.strip().split("\t")
+            newList.append(element)
+        newList = sorted(newList, key=takeSecond)
+        newList.reverse()
+        file.close()
+    with open(destination, "w") as fileDestination:
+        for element in newList:
+            element = "\t".join(element)
+            fileDestination.write(str(element) + "\n")
+        fileDestination.close()
+
+#The line of code below will test your function and put
+#your results in top500result.txt. Then, it will print
+#"Done!"
+sort_films("top500.txt", "top500result.txt")
+print("Done!")
+
+
+
+
+
+
+
