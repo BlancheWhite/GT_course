@@ -1,5 +1,5 @@
 # GT_course
-Introduction to Computing course CS1301 at Georgia Tech available on edx.org
+Introduction to Computing course CS1301 at Georgia Institute of Technology available on edx.org
 
 Below is the breakdown of how the 19 chapters split into the 4 Professional Certificate courses:
 
